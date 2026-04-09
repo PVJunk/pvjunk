@@ -518,22 +518,35 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
   // Hamburger menu
-  document.getElementById('hamburger').addEventListener('click', function() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-    this.classList.toggle('open');
-  });
-  document.querySelectorAll('#mobileMenu a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.remove('open');
-      document.getElementById('hamburger').classList.remove('open');
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger) {
+    hamburger.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open');
     });
-  });
+  }
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+      });
+    });
+  }
 
   // Area search
   var areaInput = document.getElementById('areaSearchInput');
   if (areaInput) {
-    areaInput.addEventListener('input', function() { filterAreas(this.value); });
+    areaInput.addEventListener('input', function() {
+      var q = this.value.trim().toLowerCase();
+      document.querySelectorAll('.area-tag').forEach(function(el) {
+        el.classList.toggle('hidden', q.length > 0 && !el.textContent.toLowerCase().includes(q));
+      });
+    });
   }
 
   // Pricing tabs
@@ -542,12 +555,24 @@
   if (tabLoad) tabLoad.addEventListener('click', function() { switchTab(this,'load'); });
   if (tabItem) tabItem.addEventListener('click', function() { switchTab(this,'item'); });
 
-  // FAQ
+  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(function(btn) {
-    btn.addEventListener('click', function() { toggleFaq(this); });
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
   });
 
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    documen
+  function switchTab(btn, panel) {
+    btn.closest('.faq-a-inner').querySelectorAll('.ptab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    btn.closest('.faq-a-inner').querySelectorAll('.pricing-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('panel-' + panel).classList.add('active');
+  }
+
+});
+</script>
+</body>
+</html>
