@@ -158,15 +158,99 @@
   .hero-sub{animation:fadeUp .7s ease .4s both}
   .hero-btns{animation:fadeUp .7s ease .55s both}
   @media(max-width:1100px){.areas-grid{columns:4}.faq-layout{grid-template-columns:1fr}}
+
+  /* HAMBURGER MENU */
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:200}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+  .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--navy-dark);z-index:99;flex-direction:column;padding:20px 5%;border-top:1px solid rgba(255,255,255,0.1)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);text-transform:uppercase;letter-spacing:1px}
+  .mobile-menu a:last-child{border-bottom:none;color:var(--white);font-weight:600;margin-top:8px}
+
   @media(max-width:960px){
-    .services-grid{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr;gap:40px}
-    .steps{grid-template-columns:1fr 1fr;gap:40px}.steps::before{display:none}
-    .nav-links{display:none}.stats{grid-template-columns:1fr 1fr}
-    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}
-    .stat:last-child{border-bottom:none}.contact-inner{grid-template-columns:1fr;gap:40px}
+    /* NAV */
+    .nav-links{display:none}
+    .hamburger{display:flex}
+
+    /* HERO */
+    .hero{padding:100px 5% 60px}
+    .hero h1{font-size:clamp(2.8rem,12vw,5rem)}
+    .hero-sub{font-size:.95rem}
+    .hero-btns{flex-direction:column;gap:12px}
+    .hero-btns a{text-align:center;justify-content:center}
+    .hero-bg-text{font-size:40vw;bottom:-10px}
+    .hero-bg-logo{width:min(200px,40vw);bottom:calc(40vw * 1.85)}
+
+    /* STATS */
+    .stats{grid-template-columns:1fr 1fr}
+    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);padding:32px 20px}
+    .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,0.1)}
+    .stat:last-child{border-bottom:none}
+    .stat-num{font-size:2.2rem}
+
+    /* SECTIONS */
+    section{padding:60px 5%}
+
+    /* SERVICES */
+    .services-grid{grid-template-columns:1fr 1fr;gap:12px}
+    .service-card{padding:28px 20px}
+
+    /* WHY */
+    .why{grid-template-columns:1fr;gap:32px;padding:60px 5%}
+    .why-panel{padding:36px 28px}
+
+    /* HOW */
+    .steps{grid-template-columns:1fr 1fr;gap:32px}
+    .steps::before{display:none}
+
+    /* AREAS */
     .areas-grid{columns:3}
+    .areas-search{max-width:100%}
+
+    /* FAQ */
+    .faq-layout{grid-template-columns:1fr;gap:32px}
+
+    /* CONTACT */
+    .contact-inner{grid-template-columns:1fr;gap:32px}
+    .form-wrapper iframe{height:600px}
+
+    /* SECTION TITLES */
+    .section-title{font-size:clamp(2rem,8vw,3.5rem);margin-bottom:36px}
   }
-  @media(max-width:600px){.services-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.areas-grid{columns:2}}
+
+  @media(max-width:480px){
+    /* HERO */
+    .hero h1{font-size:clamp(2.4rem,14vw,4rem)}
+    .hero-tag{font-size:.7rem;padding:6px 14px}
+
+    /* STATS */
+    .stats{grid-template-columns:1fr 1fr}
+    .stat-num{font-size:1.8rem}
+    .stat-label{font-size:.7rem;letter-spacing:1px}
+
+    /* SERVICES */
+    .services-grid{grid-template-columns:1fr}
+    .service-card{padding:24px 18px}
+
+    /* STEPS */
+    .steps{grid-template-columns:1fr}
+
+    /* AREAS */
+    .areas-grid{columns:2}
+
+    /* WHY PANEL */
+    .why-panel{padding:28px 20px}
+
+    /* CTA */
+    .cta-section h2{font-size:clamp(2rem,10vw,3rem)}
+    .cta-contacts{flex-direction:column;align-items:center}
+
+    /* FOOTER */
+    footer{flex-direction:column;align-items:center;text-align:center;gap:16px}
+  }
 </style>
 </head>
 <body>
@@ -179,7 +263,16 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">Get Free Quote</a></li>
   </ul>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#areas" onclick="closeMenu()">Service Areas</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#contact" onclick="closeMenu()">Get Free Quote</a>
+</div>
 
 <section class="hero">
   <div class="hero-bg-shape"></div>
@@ -421,6 +514,14 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
