@@ -90,42 +90,13 @@
   .county-name{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:4px}
   .county-state{font-size:.78rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px}
 
-  /* LOCATION SEARCH MODAL */
-  .location-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;align-items:center;justify-content:center;padding:20px}
-  .location-modal.open{display:flex}
-  .location-modal-inner{background:var(--navy-dark);border-radius:12px;padding:40px;max-width:480px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,0.5)}
-  .location-modal h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--white);margin-bottom:8px}
-  .location-modal p{color:rgba(255,255,255,0.5);font-size:.9rem;margin-bottom:24px;font-weight:300}
-  .location-modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.5rem;cursor:pointer;line-height:1}
-  .location-modal-close:hover{color:var(--white)}
-  .location-search-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:14px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;transition:border-color .2s;margin-bottom:16px}
-  .location-search-input::placeholder{color:rgba(255,255,255,0.35)}
-  .location-search-input:focus{border-color:rgba(255,255,255,0.5)}
-  .location-result{padding:16px;border-radius:6px;font-size:.95rem;font-weight:500;text-align:center;display:none}
-  .location-result.yes{background:rgba(61,214,140,0.15);border:1px solid rgba(61,214,140,0.3);color:#3dd68c}
-  .location-result.no{background:rgba(255,100,100,0.1);border:1px solid rgba(255,100,100,0.2);color:#ff8080}
-  .location-results-list{max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:4px}
-  .location-result-item{padding:10px 14px;background:rgba(255,255,255,0.06);border-radius:4px;font-size:.9rem;color:rgba(255,255,255,0.8);cursor:pointer}
-  .location-result-item:hover{background:rgba(255,255,255,0.12)}
-  .areas::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(255,255,255,0.04) 0%,transparent 60%);pointer-events:none}
-  .areas-inner{position:relative;z-index:1}
+
+  .areas{position:relative;overflow:hidden;background:var(--navy-dark)}
   .areas .section-eyebrow{color:rgba(255,255,255,0.45)}
   .areas .section-eyebrow::before{background:rgba(255,255,255,0.45)}
   .areas .section-title{color:var(--white);margin-bottom:12px}
-  .areas-subtitle{color:rgba(255,255,255,0.45);font-size:.95rem;font-weight:300;margin-bottom:48px;line-height:1.6}
+  .areas-subtitle{color:rgba(255,255,255,0.45);font-size:.95rem;font-weight:300;margin-bottom:40px;line-height:1.6}
   .areas-subtitle strong{color:rgba(255,255,255,0.75);font-weight:500}
-  .areas-search{display:flex;gap:12px;margin-bottom:44px;max-width:440px}
-  .areas-search input{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:12px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
-  .areas-search input::placeholder{color:rgba(255,255,255,0.35)}
-  .areas-search input:focus{border-color:rgba(255,255,255,0.4)}
-  .areas-grid{columns:5;column-gap:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px;overflow:hidden}
-  .area-tag{display:block;break-inside:avoid;padding:7px 14px;font-size:.82rem;color:rgba(255,255,255,0.5);border-radius:4px;transition:background .15s,color .15s;cursor:default;line-height:1.4}
-  .area-tag.highlight{color:var(--white);font-weight:600}
-  .area-tag:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.9)}
-  .area-tag.hidden{display:none}
-  .areas-note{margin-top:28px;font-size:.85rem;color:rgba(255,255,255,0.35);font-style:italic}
-  .areas-note a{color:rgba(255,255,255,0.55);text-decoration:none}
-  .areas-note a:hover{color:var(--white)}
 
   /* FAQ */
   .faq{background:var(--white);padding:100px 5%}
@@ -189,7 +160,7 @@
   .hero-tagline{animation:fadeUp .6s ease .3s both}
   .hero-sub{animation:fadeUp .7s ease .4s both}
   .hero-btns{animation:fadeUp .7s ease .55s both}
-  @media(max-width:1100px){.areas-grid{columns:4}.faq-layout{grid-template-columns:1fr}}
+  @media(max-width:1100px){.faq-layout{grid-template-columns:1fr}}
 
   /* HAMBURGER MENU */
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:200}
@@ -207,7 +178,7 @@
     .nav-links{display:none}
     .hamburger{display:flex}
     /* COUNTIES */
-    .counties-grid{grid-template-columns:repeat(2,1fr)}
+    .counties-grid{grid-template-columns:repeat(3,1fr)}
 
     /* HERO */
     .hero{padding:100px 5% 60px;overflow-x:hidden}
@@ -245,8 +216,6 @@
     .steps::before{display:none}
 
     /* AREAS */
-    .areas-grid{columns:3}
-    .areas-search{max-width:100%}
 
     /* FAQ */
     .faq-layout{grid-template-columns:1fr;gap:32px}
@@ -277,7 +246,6 @@
     .steps{grid-template-columns:1fr}
 
     /* AREAS */
-    .areas-grid{columns:2}
 
     /* WHY PANEL */
     .why-panel{padding:28px 20px}
@@ -309,21 +277,10 @@
   <a href="#services" id="mmServices">Services</a>
   <a href="#areas" id="mmAreas">Service Areas</a>
   <a href="#faq" id="mmFaq">FAQ</a>
-  <a href="#" id="mmLocationSearch" style="color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">🔍 Do We Serve Your Location?</a>
   <a href="#contact" id="mmContact">Get Free Quote</a>
 </div>
 
-<!-- LOCATION SEARCH MODAL -->
-<div class="location-modal" id="locationModal">
-  <div class="location-modal-inner">
-    <button class="location-modal-close" id="modalClose">✕</button>
-    <h3>Do We Serve You?</h3>
-    <p>Type your town or city below to find out if we cover your area.</p>
-    <input type="text" class="location-search-input" id="locationInput" placeholder="🔍  Enter your town...">
-    <div class="location-results-list" id="locationResults"></div>
-    <div class="location-result" id="locationResultMsg"></div>
-  </div>
-</div>
+
 
 <section class="hero">
   <div class="hero-bg-shape"></div>
@@ -392,61 +349,14 @@
   <div class="areas-inner">
     <p class="section-eyebrow">Where We Work</p>
     <h2 class="section-title">Service Areas</h2>
-    <p class="areas-subtitle">Proudly serving communities across the <strong>Greater Philadelphia area</strong>. If you don't see your county below, give us a call — we may still be able to help.</p>
+    <p class="areas-subtitle">Proudly serving communities across the <strong>Greater Philadelphia area</strong>. Don't see your town? <a href="/service-areas.html" style="color:rgba(255,255,255,0.75);">View all towns we serve →</a></p>
     <div class="counties-grid">
-      <div class="county-card">
-        <div class="county-icon">✓</div>
-        <div class="county-name">Montgomery County</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">✓</div>
-        <div class="county-name">Bucks County</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">✓</div>
-        <div class="county-name">Delaware County</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">✓</div>
-        <div class="county-name">Philadelphia</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">✓</div>
-        <div class="county-name">Chester County</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
+      <div class="county-card"><div class="county-icon">&#10003;</div><div class="county-name">Montgomery County</div><div class="county-state">Pennsylvania</div></div>
+      <div class="county-card"><div class="county-icon">&#10003;</div><div class="county-name">Bucks County</div><div class="county-state">Pennsylvania</div></div>
+      <div class="county-card"><div class="county-icon">&#10003;</div><div class="county-name">Delaware County</div><div class="county-state">Pennsylvania</div></div>
+      <div class="county-card"><div class="county-icon">&#10003;</div><div class="county-name">Philadelphia</div><div class="county-state">Pennsylvania</div></div>
+      <div class="county-card"><div class="county-icon">&#10003;</div><div class="county-name">Chester County</div><div class="county-state">Pennsylvania</div></div>
     </div>
-      <div class="county-card">
-        <div class="county-icon">📍</div>
-        <div class="county-name">Delaware County</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">📍</div>
-        <div class="county-name">Philadelphia</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">📍</div>
-        <div class="county-name">Chester County</div>
-        <div class="county-state">Pennsylvania</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">📍</div>
-        <div class="county-name">Western New Jersey</div>
-        <div class="county-state">New Jersey</div>
-      </div>
-      <div class="county-card">
-        <div class="county-icon">📍</div>
-        <div class="county-name">Northern Delaware</div>
-        <div class="county-state">Delaware</div>
-      </div>
-    </div>
-    <p class="areas-note">✦ Not sure if we serve your area? <a href="#" onclick="openLocationSearch();return false;">Search your town →</a></p>
   </div>
 </section>
 
@@ -617,6 +527,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // All served towns
   var allTowns = ['Abington','Ambler','Audubon','Bala Cynwyd','Bedminster','Bensalem','Blooming Glen','Blue Bell','Bridgeport','Bristol','Bryn Athyn','Buckingham','Carversville','Cedars','Chalfont','Cheltenham','Collegeville','Colmar','Conshohocken','Creamery','Croydon','Danboro','Darby','Doylestown','Dresher','Drexel Hill','Dublin','Durham','Eagleville','Earlington','East Greenville','Elkins Park','Erwinna','Essington','Fairless Hills','Fairview Village','Feasterville Trevose','Ferndale','Flourtown','Folcroft','Forest Grove','Fort Washington','Fountainville','Frederick','Furlong','Germantown','Gilbertsville','Gladwyne','Glenolden','Glenside','Green Lane','Gwynedd','Gwynedd Valley','Harleysville','Hatboro','Hatfield','Hilltown','Holicong','Holmes','Horsham','Huntingdon Valley','Jamison','Jenkintown','King Of Prussia','Kintnersville','Kulpsville','Lafayette Hill','Lahaska','Langhorne','Lansdale','Lansdowne','Lederach','Levittown','Line Lexington','Lumberville','Mainland','Mechanicsville','Merion Station','Milford Square','Mont Clare','Montgomeryville','Morrisville','Narberth','New Hope','Newtown','Norristown','North Wales','Norwood','Oaks','Oreland','Ottsville','Palm','Penns Park','Pennsburg','Perkasie','Perkiomenville','Philadelphia','Pineville','Pipersville','Plumsteadville','Plymouth Meeting','Point Pleasant','Pottstown','Prospect Park','Quakertown','Red Hill','Revere','Richboro','Richlandtown','Riegelsville','Royersford','Rushland','Salford','Salfordville','Sassamansville','Schwenksville','Sellersville','Sharon Hill','Silverdale','Skippack','Solebury','Souderton','Southampton','Spinnerstown','Spring House','Spring Mount','Sumneytown','Telford','Trumbauersville','Tylersport','Upper Black Eddy','Upper Darby','Valley Forge','Warminster','Warrington','Washington Crossing','West Point','Willow Grove','Worcester','Woxall','Wycombe','Wyncote','Wynnewood','Zieglerville','Zionhill'];
 
+  // Areas note search link
+  var areasNoteSearch = document.getElementById('areasNoteSearch');
+  if (areasNoteSearch) {
+    areasNoteSearch.addEventListener('click', function(e) {
+      e.preventDefault();
+      openLocationSearch();
+    });
+  }
+
   // Location search modal
   var mmLocationSearch = document.getElementById('mmLocationSearch');
   var locationModal = document.getElementById('locationModal');
@@ -674,7 +593,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         locationResultMsg.className = 'location-result no';
         locationResultMsg.style.display = 'block';
-        locationResultMsg.innerHTML = '😕 We don't currently list <strong>' + this.value + '</strong> — give us a call and we'll let you know!';
+        locationResultMsg.innerHTML = '&#128577; We don\'t currently list <strong>' + this.value + '</strong> \u2014 give us a call and we\'ll let you know!';
       }
     });
   }
@@ -734,157 +653,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- SEO: Service area towns — crawlable by search engines -->
-<div style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;" aria-hidden="true">
-  <h2>Junk Removal Service Areas</h2>
-  <p>PV Junk LLC provides junk removal, estate cleanouts, and debris removal services across the Greater Philadelphia area including:</p>
-  <ul>
-  <li>Junk removal in Abington, PA</li>
-  <li>Junk removal in Ambler, PA</li>
-  <li>Junk removal in Audubon, PA</li>
-  <li>Junk removal in Bala Cynwyd, PA</li>
-  <li>Junk removal in Bedminster, PA</li>
-  <li>Junk removal in Bensalem, PA</li>
-  <li>Junk removal in Blooming Glen, PA</li>
-  <li>Junk removal in Blue Bell, PA</li>
-  <li>Junk removal in Bridgeport, PA</li>
-  <li>Junk removal in Bristol, PA</li>
-  <li>Junk removal in Bryn Athyn, PA</li>
-  <li>Junk removal in Buckingham, PA</li>
-  <li>Junk removal in Carversville, PA</li>
-  <li>Junk removal in Cedars, PA</li>
-  <li>Junk removal in Chalfont, PA</li>
-  <li>Junk removal in Cheltenham, PA</li>
-  <li>Junk removal in Collegeville, PA</li>
-  <li>Junk removal in Colmar, PA</li>
-  <li>Junk removal in Conshohocken, PA</li>
-  <li>Junk removal in Creamery, PA</li>
-  <li>Junk removal in Croydon, PA</li>
-  <li>Junk removal in Danboro, PA</li>
-  <li>Junk removal in Darby, PA</li>
-  <li>Junk removal in Doylestown, PA</li>
-  <li>Junk removal in Dresher, PA</li>
-  <li>Junk removal in Drexel Hill, PA</li>
-  <li>Junk removal in Dublin, PA</li>
-  <li>Junk removal in Durham, PA</li>
-  <li>Junk removal in Eagleville, PA</li>
-  <li>Junk removal in Earlington, PA</li>
-  <li>Junk removal in East Greenville, PA</li>
-  <li>Junk removal in Elkins Park, PA</li>
-  <li>Junk removal in Erwinna, PA</li>
-  <li>Junk removal in Essington, PA</li>
-  <li>Junk removal in Fairless Hills, PA</li>
-  <li>Junk removal in Fairview Village, PA</li>
-  <li>Junk removal in Feasterville Trevose, PA</li>
-  <li>Junk removal in Ferndale, PA</li>
-  <li>Junk removal in Flourtown, PA</li>
-  <li>Junk removal in Folcroft, PA</li>
-  <li>Junk removal in Forest Grove, PA</li>
-  <li>Junk removal in Fort Washington, PA</li>
-  <li>Junk removal in Fountainville, PA</li>
-  <li>Junk removal in Frederick, PA</li>
-  <li>Junk removal in Furlong, PA</li>
-  <li>Junk removal in Germantown, PA</li>
-  <li>Junk removal in Gilbertsville, PA</li>
-  <li>Junk removal in Gladwyne, PA</li>
-  <li>Junk removal in Glenolden, PA</li>
-  <li>Junk removal in Glenside, PA</li>
-  <li>Junk removal in Green Lane, PA</li>
-  <li>Junk removal in Gwynedd, PA</li>
-  <li>Junk removal in Gwynedd Valley, PA</li>
-  <li>Junk removal in Harleysville, PA</li>
-  <li>Junk removal in Hatboro, PA</li>
-  <li>Junk removal in Hatfield, PA</li>
-  <li>Junk removal in Hilltown, PA</li>
-  <li>Junk removal in Holicong, PA</li>
-  <li>Junk removal in Holmes, PA</li>
-  <li>Junk removal in Horsham, PA</li>
-  <li>Junk removal in Huntingdon Valley, PA</li>
-  <li>Junk removal in Jamison, PA</li>
-  <li>Junk removal in Jenkintown, PA</li>
-  <li>Junk removal in King Of Prussia, PA</li>
-  <li>Junk removal in Kintnersville, PA</li>
-  <li>Junk removal in Kulpsville, PA</li>
-  <li>Junk removal in Lafayette Hill, PA</li>
-  <li>Junk removal in Lahaska, PA</li>
-  <li>Junk removal in Langhorne, PA</li>
-  <li>Junk removal in Lansdale, PA</li>
-  <li>Junk removal in Lansdowne, PA</li>
-  <li>Junk removal in Lederach, PA</li>
-  <li>Junk removal in Levittown, PA</li>
-  <li>Junk removal in Line Lexington, PA</li>
-  <li>Junk removal in Lumberville, PA</li>
-  <li>Junk removal in Mainland, PA</li>
-  <li>Junk removal in Mechanicsville, PA</li>
-  <li>Junk removal in Merion Station, PA</li>
-  <li>Junk removal in Milford Square, PA</li>
-  <li>Junk removal in Mont Clare, PA</li>
-  <li>Junk removal in Montgomeryville, PA</li>
-  <li>Junk removal in Morrisville, PA</li>
-  <li>Junk removal in Narberth, PA</li>
-  <li>Junk removal in New Hope, PA</li>
-  <li>Junk removal in Newtown, PA</li>
-  <li>Junk removal in Norristown, PA</li>
-  <li>Junk removal in North Wales, PA</li>
-  <li>Junk removal in Norwood, PA</li>
-  <li>Junk removal in Oaks, PA</li>
-  <li>Junk removal in Oreland, PA</li>
-  <li>Junk removal in Ottsville, PA</li>
-  <li>Junk removal in Palm, PA</li>
-  <li>Junk removal in Penns Park, PA</li>
-  <li>Junk removal in Pennsburg, PA</li>
-  <li>Junk removal in Perkasie, PA</li>
-  <li>Junk removal in Perkiomenville, PA</li>
-  <li>Junk removal in Philadelphia, PA</li>
-  <li>Junk removal in Pineville, PA</li>
-  <li>Junk removal in Pipersville, PA</li>
-  <li>Junk removal in Plumsteadville, PA</li>
-  <li>Junk removal in Plymouth Meeting, PA</li>
-  <li>Junk removal in Point Pleasant, PA</li>
-  <li>Junk removal in Pottstown, PA</li>
-  <li>Junk removal in Prospect Park, PA</li>
-  <li>Junk removal in Quakertown, PA</li>
-  <li>Junk removal in Red Hill, PA</li>
-  <li>Junk removal in Revere, PA</li>
-  <li>Junk removal in Richboro, PA</li>
-  <li>Junk removal in Richlandtown, PA</li>
-  <li>Junk removal in Riegelsville, PA</li>
-  <li>Junk removal in Royersford, PA</li>
-  <li>Junk removal in Rushland, PA</li>
-  <li>Junk removal in Salford, PA</li>
-  <li>Junk removal in Salfordville, PA</li>
-  <li>Junk removal in Sassamansville, PA</li>
-  <li>Junk removal in Schwenksville, PA</li>
-  <li>Junk removal in Sellersville, PA</li>
-  <li>Junk removal in Sharon Hill, PA</li>
-  <li>Junk removal in Silverdale, PA</li>
-  <li>Junk removal in Skippack, PA</li>
-  <li>Junk removal in Solebury, PA</li>
-  <li>Junk removal in Souderton, PA</li>
-  <li>Junk removal in Southampton, PA</li>
-  <li>Junk removal in Spinnerstown, PA</li>
-  <li>Junk removal in Spring House, PA</li>
-  <li>Junk removal in Spring Mount, PA</li>
-  <li>Junk removal in Sumneytown, PA</li>
-  <li>Junk removal in Telford, PA</li>
-  <li>Junk removal in Trumbauersville, PA</li>
-  <li>Junk removal in Tylersport, PA</li>
-  <li>Junk removal in Upper Black Eddy, PA</li>
-  <li>Junk removal in Upper Darby, PA</li>
-  <li>Junk removal in Valley Forge, PA</li>
-  <li>Junk removal in Warminster, PA</li>
-  <li>Junk removal in Warrington, PA</li>
-  <li>Junk removal in Washington Crossing, PA</li>
-  <li>Junk removal in West Point, PA</li>
-  <li>Junk removal in Willow Grove, PA</li>
-  <li>Junk removal in Worcester, PA</li>
-  <li>Junk removal in Woxall, PA</li>
-  <li>Junk removal in Wycombe, PA</li>
-  <li>Junk removal in Wyncote, PA</li>
-  <li>Junk removal in Wynnewood, PA</li>
-  <li>Junk removal in Zieglerville, PA</li>
-  <li>Junk removal in Zionhill, PA</li>
-  </ul>
-</div>
+
+
 </body>
 </html>
