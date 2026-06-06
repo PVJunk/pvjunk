@@ -133,7 +133,7 @@
   .nav-cta{background:var(--white)!important;color:var(--navy-dark)!important;padding:9px 20px;border-radius:4px;font-weight:600!important}
   .hero{min-height:100vh;background:var(--navy-dark);display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
   /* Hero is a two-column grid on desktop, stacks on mobile (mobile override in @media block) */
-  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;width:100%;max-width:1400px;margin:0 auto}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;width:100%;max-width:1400px;margin:0 auto}
   .hero-content{position:relative;z-index:2;max-width:640px}
   .hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 18px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:28px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
   .hero-tag::before{content:'';width:7px;height:7px;background:#6de8b0;border-radius:50%;display:block}
@@ -142,7 +142,7 @@
   /* Tagline now stylized in italic Playfair to feel like a tagline, not a brand name */
   .hero-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,2.8vw,2.3rem);font-weight:700;color:rgba(255,255,255,0.42);margin-bottom:32px;letter-spacing:-.5px;line-height:1.1}
   .hero-sub{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,0.58);margin-bottom:44px;font-weight:300}
-  .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-btns{display:flex;flex-direction:column;gap:14px;align-items:stretch;max-width:520px}
   .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--navy-dark);font-weight:600;font-size:.92rem;padding:14px 30px;border-radius:4px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.3)}
   .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);font-weight:500;font-size:.92rem;padding:14px 30px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.25);text-decoration:none;transition:border-color .2s,color .2s,transform .15s}
@@ -168,7 +168,7 @@
   .hero-google-stars{color:#FBBC04;font-size:.95rem;letter-spacing:1px;line-height:1}
 
   /* AI quote CTA — golden, the eye-catcher */
-  .btn-ai{position:relative;display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#FFC107,#FFB300);color:var(--navy-dark);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:4px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 6px 24px rgba(255,193,7,0.35),0 2px 6px rgba(0,0,0,0.15);overflow:hidden}
+  .btn-ai{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#FFC107,#FFB300);color:var(--navy-dark);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:4px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 6px 24px rgba(255,193,7,0.35),0 2px 6px rgba(0,0,0,0.15);overflow:hidden}
   .btn-ai::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transition:left .8s}
   .btn-ai:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,193,7,0.5),0 4px 10px rgba(0,0,0,0.2)}
   .btn-ai:hover::before{left:100%}
@@ -579,16 +579,6 @@
     </div>
     <div class="hero-visual">
       <!-- Before/After proof: photos are eager-loaded (above the fold) -->
-      <div class="hero-ba">
-        <div class="hero-ba-img">
-          <span class="hero-ba-label hero-ba-label-before">Before</span>
-          <img src="/images/before-gavin.jpg" alt="Cluttered basement before PV Junk cleanout" width="891" height="652">
-        </div>
-        <div class="hero-ba-img">
-          <span class="hero-ba-label hero-ba-label-after">After</span>
-          <img src="/images/after-gavin.jpg" alt="Clean, organized basement after PV Junk cleanout" width="876" height="661">
-        </div>
-      </div>
       <a href="https://share.google/ylnX2HoDWOlWmtXQ5" target="_blank" rel="noopener" class="hero-google" aria-label="See our 5-star Google reviews">
         <span class="hero-google-logo" aria-hidden="true">
           <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC04" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
@@ -601,6 +591,16 @@
           </span>
         </span>
       </a>
+      <div class="hero-ba">
+        <div class="hero-ba-img">
+          <span class="hero-ba-label hero-ba-label-before">Before</span>
+          <img src="/images/before-gavin.jpg" alt="Cluttered basement before PV Junk cleanout" width="891" height="652">
+        </div>
+        <div class="hero-ba-img">
+          <span class="hero-ba-label hero-ba-label-after">After</span>
+          <img src="/images/after-gavin.jpg" alt="Clean, organized basement after PV Junk cleanout" width="876" height="661">
+        </div>
+      </div>
     </div>
   </div>
 </section>
