@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Last updated: 2026-06-06 (hero redesign, services split, email fix) -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +7,7 @@
 
 <!-- Primary SEO -->
 <title>Junk Removal Montgomery County PA | Instant AI Quotes | PV Junk</title>
-<meta name="description" content="Fast, reliable junk removal across Montgomery County, PA. Skip the phone tag — upload photos to our AI tool for an instant quote. Same-week pickup. Basement & garage cleanouts, furniture, appliances, hot tubs, and more.">
+<meta name="description" content="Fast, reliable junk removal across Montgomery County, PA. Skip the phone tag — upload photos to our AI tool for an instant quote. Same-day pickup. Basement & garage cleanouts, furniture, appliances, hot tubs, and more.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://pvjunk.com">
 
@@ -18,7 +19,7 @@
 
 <!-- Open Graph (Facebook, LinkedIn) -->
 <meta property="og:title" content="Junk Removal Montgomery County PA | Instant AI Quotes | PV Junk">
-<meta property="og:description" content="Fast, reliable junk removal across Montgomery County, PA. Upload photos for an instant AI quote — no phone tag, no waiting. Same-week pickup.">
+<meta property="og:description" content="Fast, reliable junk removal across Montgomery County, PA. Upload photos for an instant AI quote — no phone tag, no waiting. Same-day pickup.">
 <meta property="og:url" content="https://pvjunk.com">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PV Junk">
@@ -26,7 +27,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Junk Removal Montgomery County PA | PV Junk">
-<meta name="twitter:description" content="Instant AI quotes. Same-week pickup. Serving Montgomery County, PA.">
+<meta name="twitter:description" content="Instant AI quotes. Same-day pickup. Serving Montgomery County, PA.">
 
 <!-- Theme color for mobile browsers -->
 <meta name="theme-color" content="#1e2e50">
@@ -83,7 +84,8 @@
     }
   ],
   "sameAs": [
-    "https://www.facebook.com/pvjunk"
+    "https://www.facebook.com/profile.php?id=61574740597655",
+    "https://share.google/ylnX2HoDWOlWmtXQ5"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -106,6 +108,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 
+<!-- reCAPTCHA v3 — replace 6LdvqxAtAAAAANbKPZg25Sja5dpSMy3QHCL0k7ez with your real site key after registering at https://www.google.com/recaptcha/admin -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LdvqxAtAAAAANbKPZg25Sja5dpSMy3QHCL0k7ez" async defer></script>
+
 <style>
   :root {
     --navy: #2b3f6b; --navy-dark: #1e2e50; --navy-deeper: #162240;
@@ -127,17 +132,15 @@
   .nav-links a:hover{color:var(--white)}
   .nav-cta{background:var(--white)!important;color:var(--navy-dark)!important;padding:9px 20px;border-radius:4px;font-weight:600!important}
   .hero{min-height:100vh;background:var(--navy-dark);display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
-
-  .hero-bg-text{position:absolute;bottom:-30px;right:3%;font-family:'Barlow Condensed',sans-serif;font-size:22vw;font-weight:700;color:rgba(255,255,255,0.025);line-height:0.9;pointer-events:none;user-select:none;text-align:right}
-
-  .hero-bg-shape{position:absolute;top:0;right:0;width:55%;height:100%;background:var(--navy-deeper);clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);opacity:.6}
-  .hero-bg-logo{position:absolute;bottom:calc(22vw * 1.85);right:3%;width:min(260px,20vw);opacity:0.12;pointer-events:none;user-select:none;filter:invert(1) brightness(2)}
+  /* Hero is a two-column grid on desktop, stacks on mobile (mobile override in @media block) */
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;width:100%;max-width:1400px;margin:0 auto}
   .hero-content{position:relative;z-index:2;max-width:640px}
   .hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 18px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:28px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
   .hero-tag::before{content:'';width:7px;height:7px;background:#6de8b0;border-radius:50%;display:block}
-  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7vw,6.5rem);font-weight:800;line-height:1.02;color:var(--white);margin-bottom:8px}
-  .hero h1 .italic{font-style:italic;color:rgba(255,255,255,0.35);display:inline}
-  .hero-tagline{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px}
+  /* Brand name as H1 — clamp() scales fluidly between mobile and desktop */
+  .hero-brand{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,6.5vw,5.5rem);font-weight:800;line-height:1;color:var(--white);margin-bottom:14px;letter-spacing:-1px}
+  /* Tagline now stylized in italic Playfair to feel like a tagline, not a brand name */
+  .hero-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,2.8vw,2.3rem);font-weight:700;color:rgba(255,255,255,0.42);margin-bottom:32px;letter-spacing:-.5px;line-height:1.1}
   .hero-sub{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,0.58);margin-bottom:44px;font-weight:300}
   .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
   .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--navy-dark);font-weight:600;font-size:.92rem;padding:14px 30px;border-radius:4px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
@@ -145,13 +148,33 @@
   .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);font-weight:500;font-size:.92rem;padding:14px 30px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.25);text-decoration:none;transition:border-color .2s,color .2s,transform .15s}
   .btn-ghost:hover{border-color:rgba(255,255,255,0.7);color:var(--white);transform:translateY(-2px)}
 
+  /* Hero visual column — before/after photos + Google rating badge */
+  .hero-visual{display:flex;flex-direction:column;gap:18px}
+  .hero-ba{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:10px;box-shadow:0 20px 60px rgba(0,0,0,0.35)}
+  .hero-ba-img{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:var(--navy-deeper)}
+  .hero-ba-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-ba-label{position:absolute;top:10px;left:10px;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 11px;border-radius:4px;color:var(--white);z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
+  .hero-ba-label-before{background:#c0392b}
+  .hero-ba-label-after{background:#27ae60}
+  /* Google rating badge — white card with official G logo, modeled on Google's review widget style. The G logo uses Google's brand colors (not a brand-palette choice — it's literally Google's mark). */
+  .hero-google{display:inline-flex;align-items:center;gap:14px;padding:12px 20px;background:var(--white);border:1px solid rgba(0,0,0,0.08);border-radius:10px;text-decoration:none;transition:transform .15s,box-shadow .2s;align-self:flex-start;box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+  .hero-google:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.35)}
+  .hero-google-logo{width:36px;height:36px;flex-shrink:0}
+  .hero-google-logo svg{width:100%;height:100%;display:block}
+  .hero-google-text-block{display:flex;flex-direction:column;gap:3px;line-height:1.1}
+  .hero-google-title{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;color:var(--text-dark)}
+  .hero-google-rating{display:flex;align-items:center;gap:7px}
+  .hero-google-num{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text-dark);line-height:1}
+  .hero-google-stars{color:#FBBC04;font-size:.95rem;letter-spacing:1px;line-height:1}
+
   /* AI quote CTA — golden, the eye-catcher */
   .btn-ai{position:relative;display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#FFC107,#FFB300);color:var(--navy-dark);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:4px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 6px 24px rgba(255,193,7,0.35),0 2px 6px rgba(0,0,0,0.15);overflow:hidden}
   .btn-ai::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);transition:left .8s}
   .btn-ai:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,193,7,0.5),0 4px 10px rgba(0,0,0,0.2)}
   .btn-ai:hover::before{left:100%}
-  .btn-ai .ai-spark{display:inline-block;font-size:1.05rem;line-height:1;animation:sparkle 2.4s ease-in-out infinite}
-  .btn-ai .ai-arrow{display:inline-block;transition:transform .25s;font-weight:800}
+  .btn-ai .ai-spark{display:inline-flex;align-items:center;line-height:1;animation:sparkle 2.4s ease-in-out infinite}
+  .btn-ai .ai-spark svg{width:20px;height:20px;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.15))}
+  .btn-ai .ai-arrow{display:inline-flex;align-items:center;line-height:1;transition:transform .25s;font-weight:800}
   .btn-ai:hover .ai-arrow{transform:translateX(4px)}
   @keyframes sparkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.15) rotate(8deg)}}
 
@@ -163,6 +186,11 @@
   /* Make the nav AI link stand out without redesigning the nav */
   .nav-cta-ai{background:linear-gradient(135deg,#FFC107,#FFB300)!important;color:var(--navy-dark)!important;padding:9px 18px;border-radius:4px;font-weight:700!important;box-shadow:0 4px 14px rgba(255,193,7,0.3);transition:transform .15s,box-shadow .2s}
   .nav-cta-ai:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,193,7,0.45)}
+  /* Social icons in nav — small, sit just before the AI Quote button. Use brand colors at slightly muted opacity so they read as recognized marks without competing with the CTA. */
+  .nav-social-group{display:flex;align-items:center;gap:6px;padding:0 4px 0 8px;border-left:1px solid rgba(255,255,255,0.1);margin-left:4px}
+  .nav-social{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;text-decoration:none;background:rgba(255,255,255,0.06);transition:background .2s,transform .15s;padding:0!important}
+  .nav-social:hover{background:rgba(255,255,255,0.15);transform:translateY(-1px)}
+  .nav-social svg{width:16px;height:16px;display:block}
   .stats{background:var(--navy);display:grid;grid-template-columns:repeat(4,1fr)}
   .stat{padding:48px 40px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
   .stat:last-child{border-right:none}
@@ -173,14 +201,53 @@
   .section-eyebrow::before{content:'';width:28px;height:2px;background:var(--navy);display:block}
   .section-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1;color:var(--navy-dark);margin-bottom:60px}
   .services{background:var(--off-white)}
+  .services-intro{max-width:680px;color:var(--muted);font-size:1rem;line-height:1.7;font-weight:300;margin-top:-32px;margin-bottom:56px}
+  /* Each Res/Comm block stacks vertically; cards inside each block are a 3-col grid on desktop */
+  .services-block{margin-bottom:56px}
+  .services-block:last-of-type{margin-bottom:32px}
+  .services-block-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:18px;border-bottom:2px solid var(--light-gray);flex-wrap:wrap}
+  /* Pill made taller + line-height:1 so it sits visually paired with the heading next to it */
+  .services-block-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:100px;background:var(--navy-dark);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;line-height:1}
+  .services-block-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.1rem);font-weight:800;color:var(--navy-dark);line-height:1}
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .service-card{background:var(--white);border-radius:8px;padding:40px 32px;border:1px solid var(--light-gray);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
-  .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+  .service-card{background:var(--white);border-radius:8px;padding:32px 28px;border:1px solid var(--light-gray);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:2}
   .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(43,63,107,0.12)}
   .service-card:hover::before{transform:scaleX(1)}
-  .service-icon{font-size:2rem;display:block;margin-bottom:18px}
-  .service-name{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--navy-dark);margin-bottom:10px}
+  /* Decorative watermark icon — sits behind card text. Aria-hidden in markup so it doesn't get read or indexed. */
+  .service-card-bg{position:absolute;bottom:-18px;right:-18px;width:140px;height:140px;color:var(--navy-dark);opacity:.06;pointer-events:none;z-index:0;transition:opacity .25s}
+  .service-card:hover .service-card-bg{opacity:.10}
+  .service-card>.service-name,.service-card>.service-desc{position:relative;z-index:1}
+  .service-name{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--navy-dark);margin-bottom:10px;line-height:1.2}
   .service-desc{font-size:.88rem;color:var(--muted);line-height:1.7;font-weight:300}
+  /* Commercial CTA inside the Commercial block — directs business inquiries to phone/email since AI tool is residential-only */
+  .services-commercial-cta{margin-top:24px;background:var(--navy-dark);border-radius:12px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:32px;color:var(--white);flex-wrap:wrap}
+  .services-commercial-cta-text{flex:1;min-width:280px}
+  .services-commercial-cta-text strong{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--white);margin-bottom:8px;line-height:1.2}
+  .services-commercial-cta-text p{font-size:.92rem;color:rgba(255,255,255,0.65);line-height:1.6;font-weight:300;margin:0}
+  .services-commercial-cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .services-commercial-cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--navy-dark);font-weight:600;font-size:.92rem;padding:12px 22px;border-radius:4px;text-decoration:none;transition:transform .15s,box-shadow .2s;white-space:nowrap}
+  .services-commercial-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+  .services-commercial-cta-btn-alt{background:transparent;color:rgba(255,255,255,0.85);border:1.5px solid rgba(255,255,255,0.25)}
+  .services-commercial-cta-btn-alt:hover{background:rgba(255,255,255,0.08);color:var(--white);border-color:rgba(255,255,255,0.5)}
+
+  /* === Unified form-trigger button — used in hero, AI card, and commercial CTA ===
+     Native <button> needs aggressive reset; user-agent 'appearance' will override the background otherwise */
+  .contact-form-trigger-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    background:var(--white);color:var(--navy-dark);
+    font-family:inherit;font-size:.95rem;font-weight:600;line-height:1;
+    padding:14px 28px;border-radius:5px;border:none;
+    cursor:pointer;text-align:center;text-decoration:none;
+    -webkit-appearance:none;appearance:none;
+    transition:transform .15s,box-shadow .2s;
+  }
+  .contact-form-trigger-btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,0,0,0.35)}
+  .contact-form-trigger-btn svg{width:18px;height:18px;flex-shrink:0}
+  /* Disposal commitment footer below both blocks */
+  .services-footer{background:rgba(43,63,107,0.04);border:1px solid var(--light-gray);border-radius:8px;padding:18px 24px;display:flex;align-items:center;gap:14px}
+  .services-footer-icon{font-size:1.4rem;flex-shrink:0;line-height:1}
+  .services-footer-text{font-size:.9rem;color:var(--muted);line-height:1.6}
   .why{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:100px 5%}
   .why-intro{color:var(--muted);font-size:1rem;line-height:1.8;font-weight:300}
   .why-panel{background:var(--navy-dark);border-radius:12px;padding:52px 48px;position:relative;overflow:hidden}
@@ -194,7 +261,7 @@
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
   .steps::before{content:'';position:absolute;top:38px;left:13%;right:13%;height:1px;background:linear-gradient(90deg,transparent,var(--navy-light),transparent);opacity:.3}
   .step{text-align:center;padding:0 16px}
-  .step-num{width:76px;height:76px;background:var(--navy-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--white);margin:0 auto 24px;position:relative;z-index:1;box-shadow:0 6px 24px rgba(43,63,107,0.25)}
+  .step-num{width:76px;height:76px;background:var(--navy-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--white);margin:0 auto 24px;position:relative;z-index:1;box-shadow:0 6px 24px rgba(43,63,107,0.25);line-height:1;font-feature-settings:"lnum";padding-top:2px}
   .step-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--navy-dark);margin-bottom:10px}
   .step-desc{font-size:.88rem;color:var(--muted);line-height:1.7;font-weight:300}
 
@@ -215,7 +282,7 @@
   .areas-subtitle strong{color:rgba(255,255,255,0.75);font-weight:500}
 
   /* FAQ */
-  .faq{background:var(--white);padding:100px 5%}
+  .faq{background:var(--white);padding:60px 5% 100px}
   .faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
   .faq-left p{color:var(--muted);font-size:.95rem;line-height:1.8;font-weight:300;margin-top:16px}
   .faq-list{display:flex;flex-direction:column;gap:0}
@@ -231,21 +298,6 @@
   .faq-a-inner p{margin-bottom:12px}
   .faq-a-inner p:last-child{margin-bottom:0}
 
-  /* Pricing table */
-  .pricing-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-  .ptab{background:var(--light-gray);border:none;padding:8px 18px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--navy);cursor:pointer;transition:background .2s,color .2s}
-  .ptab.active{background:var(--navy);color:var(--white)}
-  .pricing-panel{display:none}
-  .pricing-panel.active{display:block}
-  .price-table{width:100%;border-collapse:collapse;font-size:.88rem}
-  .price-table th{text-align:left;padding:10px 14px;background:var(--navy-dark);color:rgba(255,255,255,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1px;font-size:.8rem;text-transform:uppercase}
-  .price-table th:first-child{border-radius:6px 0 0 0}
-  .price-table th:last-child{border-radius:0 6px 0 0}
-  .price-table td{padding:11px 14px;border-bottom:1px solid var(--light-gray);color:var(--text-dark)}
-  .price-table tr:last-child td{border-bottom:none}
-  .price-table tr:hover td{background:var(--off-white)}
-  .price-badge{display:inline-block;background:var(--off-white);border:1px solid var(--light-gray);border-radius:4px;padding:3px 10px;font-size:.82rem;font-weight:600;color:var(--navy);white-space:nowrap}
-
   /* CONTACT */
   .contact-section{background:var(--off-white);padding:100px 5%}
   .contact-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:72px;align-items:start}
@@ -255,8 +307,7 @@
   .contact-detail{display:flex;align-items:center;gap:14px;color:var(--text-dark);font-size:.95rem;text-decoration:none;transition:color .2s}
   .contact-detail:hover{color:var(--navy)}
   .contact-detail-icon{width:44px;height:44px;background:var(--navy-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-  .form-wrapper{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(43,63,107,0.12);border:1px solid var(--light-gray)}
-  .form-wrapper iframe{display:block;width:100%;border:none}
+  .form-wrapper{position:relative}
 
   /* AI quote callout card (replaces the embedded Google Form) */
   .contact-ai-card{background:linear-gradient(160deg,var(--navy-dark) 0%,var(--navy-deeper) 100%);border-radius:16px;padding:48px 44px;color:var(--white);position:relative;overflow:hidden;box-shadow:0 12px 40px rgba(43,63,107,0.18)}
@@ -278,17 +329,20 @@
   .contact-chip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:14px 24px;color:var(--white);text-decoration:none;font-size:.95rem;font-weight:500;transition:background .2s,transform .15s}
   .contact-chip:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
   footer{background:var(--navy-deeper);padding:44px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(255,255,255,0.06)}
-  footer img{height:36px}
+  /* Footer text wordmark replaces the previous awkward base64 logo image */
+  .footer-brand{font-family:'PT Serif',serif;font-weight:700;font-size:1.1rem;color:rgba(255,255,255,0.55);letter-spacing:-.2px}
+  .footer-brand-tag{font-family:'Barlow Condensed',sans-serif;font-size:.66rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:600;display:block;margin-top:2px;line-height:1}
   .footer-info{font-size:.82rem;color:rgba(255,255,255,0.35);text-align:center;line-height:1.9}
   .footer-info a{color:rgba(255,255,255,0.35);text-decoration:none}
   .footer-info a:hover{color:rgba(255,255,255,0.7)}
   .footer-copy{font-size:.76rem;color:rgba(255,255,255,0.2)}
   @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
   .hero-tag{animation:fadeUp .6s ease .1s both}
-  .hero h1{animation:fadeUp .7s ease .25s both}
+  .hero-brand{animation:fadeUp .7s ease .25s both}
   .hero-tagline{animation:fadeUp .6s ease .3s both}
   .hero-sub{animation:fadeUp .7s ease .4s both}
   .hero-btns{animation:fadeUp .7s ease .55s both}
+  .hero-ba{animation:fadeUp .8s ease .35s both}
   @media(max-width:1100px){.faq-layout{grid-template-columns:1fr}}
 
   /* HAMBURGER MENU */
@@ -300,7 +354,14 @@
   .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--navy-dark);z-index:999;flex-direction:column;padding:20px 5%;border-top:1px solid rgba(255,255,255,0.1);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
   .mobile-menu.open{display:flex}
   .mobile-menu a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);text-transform:uppercase;letter-spacing:1px}
-  .mobile-menu a:last-child{border-bottom:none;color:var(--white);font-weight:600;margin-top:8px}
+  /* Was :last-child but now the social block sits at the bottom — use :last-of-type to still target the last link */
+  .mobile-menu>a:last-of-type{border-bottom:none;color:var(--white);font-weight:600;margin-top:8px}
+  /* Mobile social icons — sit below the menu links, neutralize the .mobile-menu a baseline styles */
+  .mobile-menu-social{display:flex;gap:14px;justify-content:center;padding:20px 0 8px;border-top:1px solid rgba(255,255,255,0.08);margin-top:12px}
+  .mobile-menu-social a{width:44px;height:44px;padding:0!important;border:none!important;background:rgba(255,255,255,0.07);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin:0!important;transition:background .2s}
+  .mobile-menu-social a:hover{background:rgba(255,255,255,0.15)}
+  .mobile-menu-social a:last-child{margin-top:0!important;color:inherit;font-weight:inherit}
+  .mobile-menu-social svg{width:20px;height:20px;display:block}
 
   @media(max-width:960px){
     /* NAV */
@@ -311,16 +372,27 @@
 
     /* HERO */
     .hero{padding:100px 5% 60px;overflow-x:hidden}
-    .hero h1{font-size:2.6rem;line-height:1.05;word-break:break-word;white-space:normal}
-    .hero h1 .italic{display:block;white-space:nowrap}
+    /* Stack the two-column hero grid on mobile (text first, photos below) */
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-brand{font-size:clamp(2.6rem,11vw,4rem);letter-spacing:-.5px}
+    .hero-tagline{font-size:clamp(1.3rem,5vw,1.9rem);margin-bottom:24px}
     .hero-tag{font-size:.65rem;white-space:normal;max-width:90%;letter-spacing:1px;padding:6px 12px}
     .hero-sub{font-size:.9rem;max-width:100%}
     .hero-btns{flex-direction:column;gap:12px}
     .hero-btns a{text-align:center;justify-content:center;width:100%;box-sizing:border-box}
-    .hero-bg-text{display:none!important}
-    .hero-bg-logo{display:none!important}
-    .hero-bg-shape{display:none!important}
     .hero-content{max-width:100%;padding-right:0}
+    /* Before/after stays side-by-side on mobile — small phones get cramped but readable */
+    .hero-ba{padding:6px;gap:6px}
+    .hero-ba-img{aspect-ratio:1/1}
+    .hero-ba-label{font-size:.6rem;padding:3px 8px;top:7px;left:7px}
+    .hero-google{align-self:center;padding:10px 16px;gap:12px}
+    .hero-google-logo{width:32px;height:32px}
+    .hero-google-title{font-size:.82rem}
+    .hero-google-num{font-size:.95rem}
+    .hero-google-stars{font-size:.85rem}
+
+    /* Float Google badge into the empty top-right area of the hero on tablet/medium-mobile widths */
+    .hero-google{position:absolute;top:96px;right:5%;z-index:5}
 
     /* STATS */
     .stats{grid-template-columns:1fr 1fr}
@@ -332,9 +404,15 @@
     /* SECTIONS */
     section{padding:60px 5%}
 
-    /* SERVICES */
-    .services-grid{grid-template-columns:1fr 1fr;gap:12px}
-    .service-card{padding:28px 20px}
+    /* SERVICES — cards drop to 2-col on tablet */
+    .services-grid{grid-template-columns:1fr 1fr;gap:14px}
+    .service-card{padding:26px 22px}
+    .services-block{margin-bottom:40px}
+    .services-intro{margin-top:-16px;margin-bottom:36px}
+    /* Commercial CTA: stack text and buttons on tablet */
+    .services-commercial-cta{flex-direction:column;align-items:flex-start;gap:20px;padding:28px 26px}
+    .services-commercial-cta-actions{width:100%}
+    .services-commercial-cta-btn{flex:1;justify-content:center;text-align:center}
 
     /* WHY */
     .why{grid-template-columns:1fr;gap:32px;padding:60px 5%}
@@ -351,7 +429,6 @@
 
     /* CONTACT */
     .contact-inner{grid-template-columns:1fr;gap:32px}
-    .form-wrapper iframe{height:600px}
     .contact-ai-card{padding:36px 28px}
     .contact-ai-title{font-size:1.6rem}
 
@@ -361,17 +438,22 @@
 
   @media(max-width:480px){
     /* HERO */
-    .hero h1{font-size:clamp(2.4rem,14vw,4rem)}
+    .hero-brand{font-size:clamp(2.4rem,12vw,3.4rem)}
+    .hero-tagline{font-size:clamp(1.2rem,5.5vw,1.7rem)}
     .hero-tag{font-size:.7rem;padding:6px 14px}
+    /* On narrow phones, no empty top-right space — put the badge back in normal flow below the photos */
+    .hero-google{position:static;align-self:center;margin-top:4px}
 
     /* STATS */
     .stats{grid-template-columns:1fr 1fr}
     .stat-num{font-size:1.8rem}
     .stat-label{font-size:.7rem;letter-spacing:1px}
 
-    /* SERVICES */
+    /* SERVICES — single column on small phones */
     .services-grid{grid-template-columns:1fr}
-    .service-card{padding:24px 18px}
+    .service-card{padding:24px 20px}
+    .services-block-header{flex-direction:column;align-items:flex-start;gap:10px}
+    .services-footer{padding:14px 18px;flex-direction:column;align-items:flex-start;gap:8px}
 
     /* STEPS */
     .steps{grid-template-columns:1fr}
@@ -387,6 +469,42 @@
 
     /* FOOTER */
     footer{flex-direction:column;align-items:center;text-align:center;gap:16px}
+  }
+  /* === CONTACT FORM MODAL === */
+  /* Trigger button styled to match the existing .contact-detail anchors (reset button defaults so it looks identical) */
+  /* Reset native button chrome ONLY for the form-trigger inside the contact-details list (so it looks like a plain .contact-detail row). Do NOT apply globally — that would override .contact-form-trigger-btn in the hero / AI card / commercial CTA. */
+  .contact-details .contact-form-trigger{background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;width:100%;padding:0}
+
+  .contact-form-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+  .contact-form-modal.open{display:flex}
+  .contact-form-backdrop{position:absolute;inset:0;background:rgba(15,25,50,0.7);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+  .contact-form-dialog{position:relative;background:var(--white);border-radius:12px;padding:40px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:cfFadeIn .25s ease}
+  @keyframes cfFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .contact-form-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:none;border:none;cursor:pointer;font-size:1.6rem;color:var(--muted);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;line-height:1}
+  .contact-form-close:hover{background:var(--off-white);color:var(--text-dark)}
+  .contact-form-dialog h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--navy-dark);margin-bottom:8px;line-height:1.1}
+  .contact-form-intro{color:var(--muted);font-size:.9rem;margin-bottom:24px;line-height:1.5}
+  .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  #contactForm label{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;font-size:.82rem;font-weight:600;color:var(--text-dark);text-transform:uppercase;letter-spacing:.5px}
+  #contactForm input,#contactForm select,#contactForm textarea{padding:11px 13px;border:1px solid var(--light-gray);border-radius:6px;font-family:inherit;font-size:.95rem;font-weight:400;text-transform:none;letter-spacing:normal;color:var(--text-dark);background:var(--white);transition:border-color .2s,box-shadow .2s}
+  #contactForm input:focus,#contactForm select:focus,#contactForm textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(43,63,107,0.1)}
+  #contactForm input:invalid:not(:placeholder-shown),#contactForm select:invalid:not([value=""]){border-color:#c0392b}
+  #contactForm textarea{resize:vertical;min-height:90px}
+  /* Honeypot — visible to bots, invisible to humans */
+  .cf-honeypot{position:absolute!important;left:-9999px!important;top:-9999px!important;opacity:0!important;pointer-events:none!important;height:1px;width:1px}
+  .cf-submit{background:var(--navy-dark);color:var(--white);border:none;padding:14px 32px;border-radius:6px;font-family:inherit;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;width:100%;margin-top:6px}
+  .cf-submit:hover:not(:disabled){background:var(--navy);transform:translateY(-1px)}
+  .cf-submit:disabled{opacity:.6;cursor:not-allowed}
+  .cf-status{margin-top:14px;font-size:.88rem;padding:12px 14px;border-radius:6px;display:none;line-height:1.5}
+  .cf-status.show{display:block}
+  .cf-status.success{background:rgba(61,214,140,0.1);color:#1e6f48;border:1px solid rgba(61,214,140,0.35)}
+  .cf-status.error{background:rgba(220,53,69,0.08);color:#a52833;border:1px solid rgba(220,53,69,0.3)}
+  .cf-required{color:#c0392b;font-weight:700}
+  /* Mobile: stack the two-column rows */
+  @media(max-width:600px){
+    .contact-form-dialog{padding:32px 22px}
+    .cf-row{grid-template-columns:1fr;gap:0}
+    .contact-form-dialog h2{font-size:1.5rem}
   }
 </style>
 </head>
@@ -404,6 +522,14 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#areas">Service Areas</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li class="nav-social-group">
+      <a href="https://share.google/ylnX2HoDWOlWmtXQ5" target="_blank" rel="noopener" class="nav-social" aria-label="See us on Google">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61574740597655" target="_blank" rel="noopener" class="nav-social" aria-label="Follow us on Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </li>
     <li><a href="https://quote.pvjunk.com" target="_blank" rel="noopener" class="nav-cta nav-cta-ai">✨ AI Quote</a></li>
   </ul>
   <button class="hamburger" id="hamburger">
@@ -415,49 +541,179 @@
   <a href="#areas" id="mmAreas">Service Areas</a>
   <a href="#faq" id="mmFaq">FAQ</a>
   <a href="https://quote.pvjunk.com" target="_blank" rel="noopener" id="mmAiQuote">✨ Get an AI Quote</a>
-  <a href="#contact" id="mmContact">Contact</a>
+  <button type="button" class="contact-form-trigger" id="mmContact" style="background:none;border:none;cursor:pointer;font-family:inherit;color:var(--white);font-weight:600;font-size:1rem;padding:14px 0;border-bottom:none;text-transform:uppercase;letter-spacing:1px;text-align:left;width:100%;margin-top:8px">Contact</button>
+  <div class="mobile-menu-social">
+    <a href="https://share.google/ylnX2HoDWOlWmtXQ5" target="_blank" rel="noopener" aria-label="See us on Google">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61574740597655" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
 </div>
 
 
 
 <section class="hero">
-  <div class="hero-bg-shape"></div>
-  <div class="hero-bg-text">PV<br>JUNK</div>
-  <img class="hero-bg-logo" src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEGAlMDASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAUIBgcJBAMBAv/EAEsQAAEDAwEEBQYMAwYEBwEAAAEAAgMEBREGBxIhMQg3QXSzExRRYXWUFRciNlVWcYGywdHTMpGxFiM0QlJzJDNyoSVDU2JjkpOi/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAIEBQMB/8QAKxEBAQABAgUEAgMAAgMAAAAAAAECAxEEEiExMhMUUXEzQSJhgTRCQ5Gh/9oADAMBAAIRAxEAPwDQSIi3mSIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIijr5JJH5h5ORzN+tja7dON5pzkH0j1LzLLlm73Gb3ZIoiL14IiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiLItnmkLvrnVVLp6zRh00xzJI4HcgjBG9I8jkAD9pJAHEheWzGb0ktu0eSyabvl5td0udsts9TSWqET1srG5ETCQAT6TzOB2AnkCVELo9s40PZNDaSh07aYA6EAmolkaC+pkIw57/Tn0cgMAcAqpdJ/Y/wD2KuR1Np2nJ09WSYkiaMiilJ/h9TCeR7Dw9Ga2lxUzzuPb4d89C44ytHIiK04CIiAiIgIiICIiAiIgIiICIiAozUHK39/i/NSajNQcrf3+L81DV8Knp+USaIimgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIv7gilnnjggjfLLI4NjYwEucScAADiSScABB67BabhfbzSWe00slVXVcgjhiYMlxP8AQAZJJ4AAk8Ar7bDtmVt2baZbSx7lRdqoNdX1gHGR2ODG54hjeIA7eJPErHOjVsih0FZW3q8wNfqWtjHlM4PmkZwfJNPpPAuPp4DgMncyy+J1+e8uPZe0dLlm97v1eO7W6iu1sqLbcqaOqo6mMxzRSNy17TwIIXsRVeywoFt+2W1mzfU5EDJZrDWuLqCpdxI7TE8/6x6e0cR2ga0XSzW2mLRrDTdVYL5TCekqW4PY6Nw5PaexwPEH7jkEhc/9q2hLxs91ZPY7qwvjJL6SqAwyoizwePQewjsORxGCdThtfnm17xQ1tLlu87MTREVpwEREBERAREQEREBERAREQFGag5W/v8X5qTUZqDlb+/xfmoavhU9PyiTREU0BERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAVtuijsd+CoIdd6oo8XCVodbKWVvGnYR/zXA8nkHgOwHPMjGI9FbY66+VcOt9T0gNpp371vppW5FVID/GQecbSOA/zEegEG3/aqHFa/wD0x/1a0NL/ALV+oiKguCIiD8WGbX9n9r2i6Rms1eGxVLMyUVXu5dTy44Eelp5Edo9YBGZr9XsyuN3jyyVzO1fp276U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qD3hn6rmOi89jPl77r+nTj4as/0tQe8M/VPhqz/S1B7wz9VzHRPYz5PdX4dOPhqz/S1B7wz9U+GrP9LUHvDP1XMdE9jPk91fh04+GrP9LUHvDP1T4as/0tQe8M/Vcx0T2M+T3V+HTj4as/0tQe8M/VPhqz/S1B7wz9VzHRPYz5PdX4dOPhqz/S1B7wz9U+GrP9LUHvDP1XMdE9jPk91fh04+GrP9LUHvDP1T4as/0tQe8M/Vcx0T2M+T3V+HTj4as/0tQe8M/VPhqz/S1B7wz9VzHRPYz5PdX4dOPhqz/S1B7wz9U+GrP9LUHvDP1XMdE9jPk91fh04+GrP9LUHvDP1T4as/0tQe8M/Vcx0T2M+T3V+HT2G5W+YEw19LLjnuStOP5FfN14tLXFrrpQtI5g1DAR/3XMZE9jPk91/To5q3aJorS9vfWXfUVuiDQS2JkzZJZD6GsaSST9mPThUb217QaraPraW9yQvpqOJggoadzsmOIEkE44bxJJOPSBkgArB0XbR4aaV333rlqa1zm3aCIisOQiIgKM1Byt/f4vzUmozUHK39/i/NQ1fCp6flEmiIpoCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICjNQcrf3+L81Jry3Ck87FP/ebnkZ2zcs5xnhz4c+ahqS3HaJYXa716kRFNEREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQf/2Q==" alt="">
-  <div class="hero-content">
-    <div class="hero-tag">Serving Montgomery, Bucks, Philadelphia, Delaware & Chester Counties</div>
-    <h1>Space.<span class="italic" style="white-space:nowrap">Reclaimed.</span></h1>
-    <p class="hero-tagline">Clear The Clutter.</p>
-    <p class="hero-sub">Professional junk removal & organization services. We haul it all — fast, affordable, and stress-free. One call and it's gone.</p>
-    <div class="ai-eyebrow">New · Powered by AI</div>
-    <div class="hero-btns">
-      <a href="https://quote.pvjunk.com" target="_blank" rel="noopener" class="btn-ai">
-        <span class="ai-spark">✨</span>
-        Build a Quote with AI
-        <span class="ai-arrow">→</span>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">Serving Montgomery, Bucks, Philadelphia, Delaware & Chester Counties</div>
+      <!-- Brand name is now the H1; tagline sits beneath as a styled sub-line -->
+      <h1 class="hero-brand">PV Junk</h1>
+      <p class="hero-tagline">Space. Reclaimed.</p>
+      <p class="hero-sub">Professional junk removal & organization services. We haul it all — fast, affordable, and stress-free. One call and it's gone.</p>
+      <div class="ai-eyebrow">New · Powered by AI</div>
+      <div class="hero-btns">
+        <a href="https://quote.pvjunk.com" target="_blank" rel="noopener" class="btn-ai">
+          <span class="ai-spark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="#ffffff"><path d="M11 2.5l1.3 5.2 5.2 1.3-5.2 1.3-1.3 5.2-1.3-5.2-5.2-1.3 5.2-1.3z"/><path d="M18 13l.7 2.8 2.8.7-2.8.7-.7 2.8-.7-2.8-2.8-.7 2.8-.7z"/></svg>
+          </span>
+          Build a Quote with PV Junk's AI Quoting Tool
+          <span class="ai-arrow">→</span>
+        </a>
+        <button type="button" class="contact-form-trigger contact-form-trigger-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          Send Us a Message
+        </button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Before/After proof: photos are eager-loaded (above the fold) -->
+      <div class="hero-ba">
+        <div class="hero-ba-img">
+          <span class="hero-ba-label hero-ba-label-before">Before</span>
+          <img src="/images/before-gavin.jpg" alt="Cluttered basement before PV Junk cleanout" width="891" height="652">
+        </div>
+        <div class="hero-ba-img">
+          <span class="hero-ba-label hero-ba-label-after">After</span>
+          <img src="/images/after-gavin.jpg" alt="Clean, organized basement after PV Junk cleanout" width="876" height="661">
+        </div>
+      </div>
+      <a href="https://share.google/ylnX2HoDWOlWmtXQ5" target="_blank" rel="noopener" class="hero-google" aria-label="See our 5-star Google reviews">
+        <span class="hero-google-logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC04" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+        </span>
+        <span class="hero-google-text-block">
+          <span class="hero-google-title">Google Rating</span>
+          <span class="hero-google-rating">
+            <span class="hero-google-num">5.0</span>
+            <span class="hero-google-stars" aria-hidden="true">★★★★★</span>
+          </span>
+        </span>
       </a>
-      <a href="tel:4842380809" class="btn-ghost">📞 Or Call (484) 238-0809</a>
     </div>
   </div>
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="stat-num">✓</div><div class="stat-label">Fully Insured</div></div>
+  <div class="stat"><div class="stat-num">Insured</div><div class="stat-label">Fully Licensed</div></div>
   <div class="stat"><div class="stat-num">Same Day</div><div class="stat-label">Service Available</div></div>
-  <div class="stat"><div class="stat-num">★</div><div class="stat-label">Locally Owned</div></div>
-  <div class="stat"><div class="stat-num">Free Quotes</div></div>
+  <div class="stat"><div class="stat-num">Local</div><div class="stat-label">Family Operated</div></div>
+  <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Quotes, No Commitment</div></div>
 </div>
 
 <section class="services" id="services">
   <p class="section-eyebrow">What We Do</p>
   <h2 class="section-title">Our Services</h2>
-  <div class="services-grid">
-    <div class="service-card"><span class="service-icon">🚛</span><div class="service-name">Junk Removal</div><p class="service-desc">We haul away furniture, appliances, electronics, yard waste, construction debris, and more. No job too big or too small.</p></div>
-    <div class="service-card"><span class="service-icon">📦</span><div class="service-name">Home Organization</div><p class="service-desc">Declutter and transform your living spaces. We help sort, organize, and create systems that keep your home clean and functional.</p></div>
-    <div class="service-card"><span class="service-icon">🏗️</span><div class="service-name">Estate Cleanouts</div><p class="service-desc">Compassionate, thorough cleanout services for estates and homes. We handle the heavy lifting so you don't have to.</p></div>
-    <div class="service-card"><span class="service-icon">🏢</span><div class="service-name">Office Cleanouts</div><p class="service-desc">Clear out old office furniture, equipment, and clutter fast. Minimal disruption to your business operations.</p></div>
-    <div class="service-card"><span class="service-icon">🌿</span><div class="service-name">Yard & Debris Removal</div><p class="service-desc">Tree branches, leaves, old lumber, and outdoor clutter — we remove it all and leave your yard looking great.</p></div>
-    <div class="service-card"><span class="service-icon">♻️</span><div class="service-name">Responsible Disposal</div><p class="service-desc">We sort items for recycling and donation wherever possible. We care about our community and the environment.</p></div>
+  <p class="services-intro">Whether it's a single-item pickup or a full property cleanout, residential or commercial, we handle the job from start to finish. Same-day service available across the Greater Philadelphia area.</p>
+
+  <!-- Residential services block -->
+  <div class="services-block">
+    <div class="services-block-header">
+      <span class="services-block-badge">🏠 Residential</span>
+      <h3 class="services-block-title">For Homeowners</h3>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 8h11v9H1zm12 3h5l4 5v2h-9zM4 17a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm12 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/></svg>
+        <div class="service-name">Junk Removal</div>
+        <p class="service-desc">Furniture, appliances, electronics, mattresses, yard waste, and general household clutter — hauled away in a single visit. No job too big or small.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 2 11h2v10h7v-6h2v6h7V11h2zm0 5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
+        <div class="service-name">Whole-Home & Estate Cleanouts</div>
+        <p class="service-desc">Compassionate, thorough cleanout services for estates, downsizing, and full-property clearances. We handle the heavy lifting with care and discretion.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2 13h7v8H2zm9 0h7v8h-7zM6 3h12v8H6zm2 2v4h2V5zm6 0v4h2V5z"/></svg>
+        <div class="service-name">Garage, Basement & Attic Cleanouts</div>
+        <p class="service-desc">Reclaim the spaces you've been avoiding. Old boxes, holiday decorations, lawn equipment, broken furniture — gone in one trip.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2 13c0-3 2-5 5-5h10c3 0 5 2 5 5v3H2zm-1 4c0-1 1-2 2-2h18c1 0 2 1 2 2v4h-2v-2H3v2H1zM6 11v5m4-5v5m4-5v5m4-5v5"/></svg>
+        <div class="service-name">Furniture & Appliance Removal</div>
+        <p class="service-desc">Couches, sectionals, mattresses, refrigerators, washers, dryers, treadmills, and more — removed without scratching your floors or walls.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h18v6c0 2-2 3-4 3H7c-2 0-4-1-4-3zM8 4c-1 1-1 3 0 5m4-5c-1 1-1 3 0 5m4-5c-1 1-1 3 0 5"/></svg>
+        <div class="service-name">Hot Tub & Pool Removal</div>
+        <p class="service-desc">Specialty removals including hot tubs, above-ground pools, and large outdoor equipment. We bring the tools and the muscle.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h18v3H3zm0 7h18v3H3zm0 7h18v3H3zM5 6h2v4H5zm4 0h3v4H9zm5 0h3v4h-3zm-9 7h3v4H5zm5 0h2v4h-2zm4 0h4v4h-4z"/></svg>
+        <div class="service-name">Home Organization & Decluttering</div>
+        <p class="service-desc">More than removal — we help sort, organize, and create systems that keep your home functional long after we leave.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Commercial services block -->
+  <div class="services-block">
+    <div class="services-block-header">
+      <span class="services-block-badge">🏢 Commercial</span>
+      <h3 class="services-block-title">For Businesses</h3>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6c1 0 2 1 2 2v2h4c1 0 1 1 1 2v11c0 1 0 1-1 1H3c-1 0-1 0-1-1V9c0-1 0-2 1-2h4V5c0-1 1-2 2-2zm0 4h6V5H9zm2 6v3h2v-3z"/></svg>
+        <div class="service-name">Office Cleanouts</div>
+        <p class="service-desc">Desks, cubicles, file cabinets, electronics, and old office equipment cleared fast with minimal disruption to your business operations.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c-3 0-6 3-6 6v3h12v-3c0-3-3-6-6-6zM4 13h16v3H4zm4 5h8v3H8z"/></svg>
+        <div class="service-name">Construction & Buildout Debris</div>
+        <p class="service-desc">Drywall, lumber, tile, flooring, and renovation waste removed on your project's schedule. We work around your trades.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h3l1 3h15l-3 9H8L7 18h13v2H6a1 1 0 01-1-1l1-4L4 5H2zm6 18a2 2 0 100 2 2 2 0 000-2zm10 0a2 2 0 100 2 2 2 0 000-2z"/></svg>
+        <div class="service-name">Retail & Warehouse Cleanouts</div>
+        <p class="service-desc">Shelving, fixtures, leftover inventory, and end-of-lease cleanouts. We clear it all and leave the space turnover-ready.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 3a5 5 0 100 10 5 5 0 000-10zm0 3a2 2 0 110 4 2 2 0 010-4zm-4 7L2 23l2 2 2-2 2 2 2-2 2 2 3-3z"/></svg>
+        <div class="service-name">Tenant Turnover Cleanouts</div>
+        <p class="service-desc">For landlords and property managers — fast cleanouts between tenants so units can be relisted and rented without delay.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7 10V7a5 5 0 0110 0v3h2v12H5V10zm7 0V7a2 2 0 10-4 0v3zm-2 4a2 2 0 100 4 2 2 0 000-4z"/></svg>
+        <div class="service-name">Storage Unit Cleanouts</div>
+        <p class="service-desc">Abandoned storage units cleared so facility operators can re-rent the space. We handle disposal, donation, and recycling responsibly.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-card-bg" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 2 11h2v10h16V11h2zM8 12l2.5 2.5L8 17l1.5 1.5L12 16l2.5 2.5L16 17l-2.5-2.5L16 12l-1.5-1.5L12 13l-2.5-2.5z"/></svg>
+        <div class="service-name">Foreclosure & Distressed Property Cleanouts</div>
+        <p class="service-desc">Discreet, thorough cleanouts for foreclosed homes, REO properties, and distressed assets. Get the property market-ready faster.</p>
+      </div>
+    </div>
+    <!-- Commercial CTA: AI tool is residential-only; businesses need a site visit -->
+    <div class="services-commercial-cta">
+      <div class="services-commercial-cta-text">
+        <strong>Need a commercial quote?</strong>
+        <p>Our AI quoting tool is built for residential cleanouts. For commercial jobs, send us a message with the details and we'll schedule a site visit to give you an accurate quote.</p>
+      </div>
+      <div class="services-commercial-cta-actions">
+        <button type="button" class="contact-form-trigger contact-form-trigger-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          Send Us a Message
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disposal commitment spans both blocks -->
+  <div class="services-footer">
+    <span class="services-footer-icon">♻️</span>
+    <span class="services-footer-text">All items disposed of responsibly — recycled, donated, or hauled to certified facilities whenever possible.</span>
   </div>
 </section>
 
@@ -481,8 +737,8 @@
   <p class="section-eyebrow">Simple Process</p>
   <h2 class="section-title">How It Works</h2>
   <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-title">Call or Email Us</div><p class="step-desc">Tell us what you need gone and where you're located.</p></div>
-    <div class="step"><div class="step-num">2</div><div class="step-title">Get a Free Quote</div><p class="step-desc">Clear, honest pricing — no obligation, no surprises.</p></div>
+    <div class="step"><div class="step-num">1</div><div class="step-title">Get Your Quote</div><p class="step-desc">Residential cleanout? Try our <a href="https://quote.pvjunk.com" target="_blank" rel="noopener" style="color:var(--navy);font-weight:500;">AI quoting tool</a> — snap a few photos, get a real price in 60 seconds. Commercial job? Call or email us and we'll schedule a site visit.</p></div>
+    <div class="step"><div class="step-num">2</div><div class="step-title">Schedule the Pickup</div><p class="step-desc">We confirm a time that works for you. Same-day and next-day appointments available.</p></div>
     <div class="step"><div class="step-num">3</div><div class="step-title">We Show Up</div><p class="step-desc">On schedule, ready to work. You don't lift a finger.</p></div>
     <div class="step"><div class="step-num">4</div><div class="step-title">All Cleared!</div><p class="step-desc">We haul everything away and leave your space clean.</p></div>
   </div>
@@ -509,13 +765,13 @@
     <div class="faq-left">
       <p class="section-eyebrow">Got Questions?</p>
       <h2 class="section-title" style="margin-bottom:16px;">FAQs</h2>
-      <p>Everything you need to know before booking. Still have a question? <a href="#contact" style="color:var(--navy);font-weight:500;">Drop us a message.</a></p>
+      <p>Everything you need to know before booking. Still have a question? <button type="button" class="contact-form-trigger" style="background:none;border:none;padding:0;color:var(--navy);font-weight:500;cursor:pointer;font-family:inherit;font-size:inherit;text-decoration:underline">Drop us a message.</button></p>
     </div>
     <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-q">
-          📌 Where do you serve?
+          Where do you serve?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -528,49 +784,21 @@
 
       <div class="faq-item">
         <button class="faq-q">
-          💰 How is pricing determined?
+          How is pricing determined?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            <p>We price based on the volume of space your items take up in our truck, or by individual item for smaller jobs. Here's a breakdown of both methods:</p>
-            <div class="pricing-tabs">
-              <button class="ptab active" id="tab-load">📦 By Load Size</button>
-              <button class="ptab" id="tab-item">🪑 By Item</button>
-            </div>
-            <div class="pricing-panel active" id="panel-load">
-              <table class="price-table">
-                <thead><tr><th>Load Size</th><th>Typical Price Range</th></tr></thead>
-                <tbody>
-                  <tr><td>Small load (⅛ truck / small pickup)</td><td><span class="price-badge">$75 – $125+</span></td></tr>
-                  <tr><td>¼ Truckload</td><td><span class="price-badge">$125 – $250</span></td></tr>
-                  <tr><td>½ Truckload</td><td><span class="price-badge">$200 – $400</span></td></tr>
-                  <tr><td>¾ Truckload</td><td><span class="price-badge">$350 – $600</span></td></tr>
-                  <tr><td>Full Truckload</td><td><span class="price-badge">$600 – $800</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="pricing-panel" id="panel-item">
-              <table class="price-table">
-                <thead><tr><th>Item</th><th>Flat Rate Estimate</th></tr></thead>
-                <tbody>
-                  <tr><td>Sofa / Couch</td><td><span class="price-badge">$75 – $150</span></td></tr>
-                  <tr><td>Mattress</td><td><span class="price-badge">$75 – $125</span></td></tr>
-                  <tr><td>Refrigerator</td><td><span class="price-badge">$100 – $175</span></td></tr>
-                  <tr><td>Washer / Dryer</td><td><span class="price-badge">$75 – $125</span></td></tr>
-                  <tr><td>TV</td><td><span class="price-badge">$50 – $100</span></td></tr>
-                  <tr><td>Hot Tub</td><td><span class="price-badge">$300 – $600</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p style="margin-top:14px;font-size:.82rem;color:var(--muted);font-style:italic;">All pricing is estimates. We provide a firm, no-obligation quote before any work begins.</p>
+            <p>Every job is unique. Pricing depends on the volume of items, accessibility, and any special handling needed (hot tubs, mattresses, appliances with Freon, etc.).</p>
+            <p><strong>For residential cleanouts</strong>, the fastest way to get an accurate price is our <a href="https://quote.pvjunk.com" target="_blank" rel="noopener" style="color:var(--navy);font-weight:500;">AI quoting tool</a> — snap a few photos and you'll get a real, itemized quote in about 60 seconds. No commitment, no callback required.</p>
+            <p><strong>For commercial jobs</strong>, call or email us — <a href="tel:4842380809" style="color:var(--navy);font-weight:500;">(484) 238-0809</a> or <a href="mailto:info@pvjunk.com" style="color:var(--navy);font-weight:500;">info@pvjunk.com</a> — and we'll schedule a site visit to give you an accurate quote.</p>
           </div>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          📅 Do you offer same-day service?
+          Do you offer same-day service?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -582,7 +810,7 @@
 
       <div class="faq-item">
         <button class="faq-q">
-          🚫 What items can't you take?
+          What items can't you take?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -596,7 +824,7 @@
 
       <div class="faq-item">
         <button class="faq-q">
-          ♻️ What happens to my junk?
+          What happens to my junk?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -608,7 +836,7 @@
 
       <div class="faq-item">
         <button class="faq-q">
-          🛡️ Are you licensed and insured?
+          Are you licensed and insured?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
@@ -622,53 +850,20 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <p class="section-eyebrow">Get In Touch</p>
-      <h2 class="section-title">Request a<br>Free Quote</h2>
-      <p>Fill out the form and we'll get back to you quickly with a clear, honest price. No commitment required.</p>
-      <div class="contact-details">
-        <a href="tel:4842380809" class="contact-detail">
-          <div class="contact-detail-icon">📞</div>(484) 238-0809
-        </a>
-        <a href="/cdn-cgi/l/email-protection#d0a0a6baa5bebbbcbcb390b7bdb1b9bcfeb3bfbd" class="contact-detail">
-          <div class="contact-detail-icon">✉️</div>Email Us
-        </a>
-      </div>
-    </div>
-    <div class="form-wrapper">
-      <div class="contact-ai-card">
-        <div class="contact-ai-eyebrow">✨ Fastest way to get a price</div>
-        <h3 class="contact-ai-title">Skip the form.<br><em>Get a quote in 60 seconds.</em></h3>
-        <p class="contact-ai-desc">Snap a few photos of what needs to go and our AI will give you a real price — instantly. No callback. No waiting.</p>
-        <a href="https://quote.pvjunk.com" target="_blank" rel="noopener" class="btn-ai contact-ai-btn">
-          <span class="ai-spark">✨</span>
-          Build a Quote with AI
-          <span class="ai-arrow">→</span>
-        </a>
-        <div class="contact-ai-divider"><span>or</span></div>
-        <a href="tel:4842380809" class="contact-ai-call">📞 Call (484) 238-0809</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="cta-section">
   <h2>Ready To Clear <em>It Out?</em></h2>
   <p class="cta-sub">Same-day service available — call us now.</p>
   <div class="cta-contacts">
     <a href="tel:4842380809" class="contact-chip">📞 (484) 238-0809</a>
-    <a href="/cdn-cgi/l/email-protection#f686809c83989d9a9a95b6919b979f9ad895999b" class="contact-chip">✉️ Email Us</a>
+    <a href="mailto:info@pvjunk.com" class="contact-chip">✉️ info@pvjunk.com</a>
   </div>
 </section>
 
 <footer>
-  <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEGAlMDASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAUIBgcJBAMBAv/EAEsQAAEDAwEEBQYMAwYEBwEAAAEAAgMEBREGBxIhMQg3QXSzExRRYXWUFRciNlVWcYGywdHTMpGxFiM0QlJzJDNyoSVDU2JjkpOi/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAIEBQMB/8QAKxEBAQABAgUEAgMAAgMAAAAAAAECAxEEEiExMhMUUXEzQSJhgTRCQ5Gh/9oADAMBAAIRAxEAPwDQSIi3mSIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIijr5JJH5h5ORzN+tja7dON5pzkH0j1LzLLlm73Gb3ZIoiL14IiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiLItnmkLvrnVVLp6zRh00xzJI4HcgjBG9I8jkAD9pJAHEheWzGb0ktu0eSyabvl5td0udsts9TSWqET1srG5ETCQAT6TzOB2AnkCVELo9s40PZNDaSh07aYA6EAmolkaC+pkIw57/Tn0cgMAcAqpdJ/Y/wD2KuR1Np2nJ09WSYkiaMiilJ/h9TCeR7Dw9Ga2lxUzzuPb4d89C44ytHIiK04CIiAiIgIiICIiAiIgIiICIiAozUHK39/i/NSajNQcrf3+L81DV8Knp+USaIimgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIv7gilnnjggjfLLI4NjYwEucScAADiSScABB67BabhfbzSWe00slVXVcgjhiYMlxP8AQAZJJ4AAk8Ar7bDtmVt2baZbSx7lRdqoNdX1gHGR2ODG54hjeIA7eJPErHOjVsih0FZW3q8wNfqWtjHlM4PmkZwfJNPpPAuPp4DgMncyy+J1+e8uPZe0dLlm97v1eO7W6iu1sqLbcqaOqo6mMxzRSNy17TwIIXsRVeywoFt+2W1mzfU5EDJZrDWuLqCpdxI7TE8/6x6e0cR2ga0XSzW2mLRrDTdVYL5TCekqW4PY6Nw5PaexwPEH7jkEhc/9q2hLxs91ZPY7qwvjJL6SqAwyoizwePQewjsORxGCdThtfnm17xQ1tLlu87MTREVpwEREBERAREQEREBERAREQFGag5W/v8X5qTUZqDlb+/xfmoavhU9PyiTREU0BERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAVtuijsd+CoIdd6oo8XCVodbKWVvGnYR/zXA8nkHgOwHPMjGI9FbY66+VcOt9T0gNpp371vppW5FVID/GQecbSOA/zEegEG3/aqHFa/wD0x/1a0NL/ALV+oiKguCIiD8WGbX9n9r2i6Rms1eGxVLMyUVXu5dTy44Eelp5Edo9YBGZr9XsyuN3jyyVzO1fp276U1DV2K90rqatpX7r2niHDmHtPa0jBB7QVEK+fSG2UUu0fTomoxHBqGhYTRTuwBIOZhef9JPEHsPHkSDRS5UNZbLhUW+vppaaqp5DFNDICHMeDggjsIIWtoa01J/bO1dO4X+nnREXdzEREBERAREQEREBERAUZqDlb+/xfmpNRmoOVv7/F+ahq+FT0/KJNERTQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBFJwafv1RRefQWS5S0uM+XZSvdHj07wGMfeoxN5TYREQEREGY021PaLTU8dPT6xvEMMTAyOOOoLWsaBgAAcAAAAAOWF9fjZ2l/Xe+e9OWEoo+nh8R7z35Zt8bO0v673z3py2f0Xtf611BteobZetT3Ovo3087nQTzl7XEMJBIPoPFV6W4Oh/wBeVu7rUeEVy1tPGYWyTs6aeeVznVedae6WuoL1pzZfBcLDc6m21TrpFG6WneWuLCyQkZHYSB/JbhWjOm11QU3teHw5VmaMlzkq7q3bCqw/GztL+u9896cnxs7S/rvfPenLCUWx6eHxGfz5fLNvjZ2l/Xe+e9OWL3y7XG+XSW6XeqkrK6bd8rUS8ZJN0BoLnc3YAaMnsAHIBeFEmGOPWR5csr3oiIpPBERARe+2WW83Rj32y0V9a1hw51PTPkA+0gHC8lRDNTzOgnifFKw4cx7S1wPoIPEJvDZ80REBERAREQFGag5W/v8AF+ak1Gag5W/v8X5qGr4VPT8ok0RFNAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAVneiLsotV0tZ13qOiirQ6Ux2ynmbvRjcOHSkHgTvAgA8AWk88EViV/8AoytDdhmmA0Af8PIeHrmeSqvGZ3HDp+3bh8Zll1/TY7QA0AAADkMclofpTbJ7RfNJ3DV9moIqW+W9jqmodC0N86iAy/fAHF4AJB5nBBzkY30ofWgDtHXoOAINvnBB/wBtyztPO45SxdzxmUrmeiIttmCIiAiIgLcHQ+68rb3Wo8IrT63B0PuvK291qPCK56/hfpPT84vOFozptdT9N7Xg8OVbzC0Z02up+m9rweHKsrQ/JF/V8KpWiItlmiIiAiIgLcPRd2Z0mv8AVdTW3qN0lltLWvmiBwJ5XE7kZI44w1xOOOMDtytPK3nQUa0aK1A7A3jcWjPpAibj81w4nK46dsddGTLOSrB0FFSUFHHRUNLDS00Td2OKGMMYwegAAAD7FhO2LZjYtotgnpqunhgurGHzK4Bn95E/HAOI4uYTwIPZxGCAVn6FZOOVxu8q/cZZs5fXGjqLfX1FBVxmKoppXwysPNr2kgg/YQQvgst2zta3a5q4ADHwzVn7zK4lYktzG82MrMym1sERF68EREBRmoOVv7/F+ak1Gag5W/v8X5qGr4VPT8ok0RFNAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAXQHoz9Rel+7yeK9c/l0B6M/UXpfu8nivVPjfGfaxw3lWxzyUTrL5oXnuE/huUseSidZfNC89wn8Nyzse8Xb2czURFuxlCIiAiIgLcHQ+68rb3Wo8IrT63B0PuvK291qPCK56/hfpPT84vOFozptdT9N7Xg8OVbzC0Z02up+m9rweHKsrQ/JPtf1fCqVoiLZZoiIgIiICt70FPmPf/AGk3w2qoSt70FPmPf/aTfDaq3F/jrtw/msWEKBCspoOc22nre1f7ZqvFcsQWX7aet7V/tmq8VyxBbmn4T6ZWfeiIik8EREBRmoOVv7/F+ak1Gag5W/v8X5qGr4VPT8ok0RFNAREQERZvso1tZdG1Fe+9aHtGq46oRhjK9rCYC0uyWFzHgZyM4A5BeZWybybvcZLdrdmEIr57K7bsv1/o2m1JQbOtO0rJnujfDLaqcuY9pwRkNwR2g8OB5Ba02wa72f7P9cVGmviX0rchDFHJ5fyMEWd4Zxu+QdjH2qtOJuWXLMesdroSTe3oquitvsr1jsU2h17dP1mziw2O6zgiKJ1DAWSntayVjGnewM4IGewleHbb0b7bDaKm+6BZNBNTsMklsdIZGSNHEmMnLg7HHBJBxgY7ZTiJMuXObV56PTfG7qrItp7HdoujtLUTbVqvZ3aL/DJUGR9fLBFJPE0gDAD2HeAxnG8OZVu9P6O2XX6yUl5tmi9LT0VXEJYZBaIBlpH/AEcD2EekLzV4i6d6zoYaPPO7niisDtt17o+03PUeibfsi05RVMLX0jLj5CFkrCW8JWNbECCMgjDvQeCr8u2nncsd7NnPLGS7biLdOzrazoG02m22fUuyWxXBtPGI57i2ngknkx/nLXx/KJ7cvCsRr+k2Q6M0WdU3XQunDTPazyETLPT+Ume8ZawAtxnHE54AAnsXLPXywu1x+nTHSmU337KHIsy2raws2sLrTVVl0ba9L09OwsMNC1g8rk5DnbrWAkcuSw1d8bbN7NnKyS7S7iIi9eCLbOyvadozTdjpbLqTZfZL6I5HmS4SQwvqC1ziQMPjO9gHABcOAHEK2undHbML9YqG9W7Q2mH0ldAyeFzrPACWOAIyNzgcHkq2rxF071nR2w0uedK54orF7V9p2zmz3u8aYseyPTM76V0lIa99LBGRIMtcWMbGTwOcHeByOQVdF1088spvZs554zG7S7iIi6IiIiAiIgIiICm9FaUv2sr4yy6coRWVrml5YZWRhrAQHOJeQMDOcDJ4cAeShF96KrqqGobUUVVPSzt5SQyFjh9hBBC8u+3TuTbfq3RRdGDaVUNBlmsNLwGRLWPP4GFa32m6Iu2z/Ux0/eZ6KeqELJt+ke5zN12cDLmtOeBzwVoehlq6+6i0xeLde7jU3A2+dnm81RIXyBjwcsLjkkAjIyTjOOWAtRdM/rnd7Ng/q9VdPV1Lq8mSxnhjyc0aUREVtXEREBERAREQF0B6M/UXpfu8nivXP5dAejP1F6X7vJ4r1T43xn2scN5X6bHPJROsvmhee4T+G5Sx5KJ1l80Lz3Cfw3LOx7xdvZzNREW7GUIiICIiAtwdD7rytvdajwitPrcHQ+68rb3Wo8Irnr+F+k9Pzi84WjOm11P03teDw5VvMLRnTa6n6b2vB4cqytD8k+1/V8KpWiItlmiIiAiIgK3vQU+Y9/8AaTfDaqhK3vQU+Y9/9pN8NqrcX+Ou3D+axYQoEKymg5zbaet7V/tmq8VyxBZftp63tX+2arxXLEFuafhPplZ96IiKTwREQFGag5W/v8X5qTUZqDlb+/xfmoavhU9PyiTREU0BERAREQXh6G/UrTd+qPxBV96X/Xdce7QfgCsF0N+pWm79UfiCr/0u2Oftyr442ue91NTgNaMkksGAB2lUNH8+S1qfhjVNmr57Vd6O50znNnpJmTRkHBy0gjj9y6b0zzLSxyOHF7AT94VH9hGxjU2qdUUNxu9rqrbYqWZk0stTGYzOAQQxgIBOSACQMAZ45wFaHbjtItWzrSU0z5o5LvUxmO30gcN5zsfxkcwxuck/cOJXnFWZ5THHrXuhLjjbVGNoMcEOvtQxUwaIGXSpbGByDRK4DH3YVouhJqv4Q0hcNKVEuZrZN5anac58jIckDPPDw7lyyFUWomkqJ5Kid7pJZXF73HmSTkk/aStg9HLVZ0ltZtFXLJ5Okq3+Z1Wc43JMAH7nbpz6AVZ1tPm09v3HHSy5c2xem9pQ0OqrZq2njIhuMPm9QQAAJY+IJ7clp/8A4VdV0E6ROlf7X7J7vQwxmSsp4/O6UAZJfHxwPtGR9659qPCZ82G1/T3iMdst/lk2y3S7tZa/tGnN17oquoAnLSQWxN+VIcji07oIyO0hbU6ZmrW3PW1JpKikHmVkhAka13AzvAJBH/tbuj7ypDomW2m07p3VO1K7RkQW6mfBTEgjOAHvx6cncaMdpIWgr7c6q9Xqtu9a8vqKyd88hJJ4uJJAz2DOB6gpT+erv+o8v8cNv3XiREXdyEREBdE9hfU7pP2TB+ALnYuiewvqd0n7Jg/AFS43xizw3eqHbT+srVHtir8Z6+WldH6p1UZRp2xV9zERAkdBESxhPIF3IE+glfXaf1lao9sVfjPX10Hr/Vuh6h8umrvLRsle100O6HxSkcg5pBB4ZGRg4PAhWf5ck5e7h05rv2ZC7YXtWbSS1cmkpWQxsMjy+sgaQACScGQHkDwxla+oKOruFbFRUFLNVVUzg2KGGMve9x5AAAkn1BdHIbk68bNhdnxiN1ZaTO5o7C6LJA/mucdvrKu3V9PX0FVPS1VPI2WGaF5Y5jmnIORy5cu1ctDWy1N95Ojpq6eOG237Z5Q7EtqlYAYtGV7R/wDM+OI/ye4KA11oXVWhqilp9U2o2+WrYXwtM8Um+AQCcscQMEjnhWR6I20zVmqr3dbDqW5PubIaZtRBNKwCRmHBpaSAMg5zxycjnxWPdO/5x6Y7pP8AjavMdbU9Xkyke5aePJzSq3QRSzzNihifLI44a1gJJPqA4lTtJojWlY0PpNI6gqGkZBitszwf5NPpC/vZ1rS96D1EL7YXU7avyLoXCePfYWEgkEZHaBxBBV7tius5dfbPKDUlRSMpamYvjnjZksD2OIJbkk4OMgEnGcZKlr62Wl+ujzS08c+lvVQO26cv9yvhsVDZq+oujXFr6RlO4ysIODvNxluDzJxjtws5+ILa55Ey/wBkH7uM/wCOpt7H2eUzn1YytlbUdrlFs51TerHs8tVGbrPVvlu12qmeUc+UkksYAQMMzgZyBg8Cck+ro9be9T33W1LpjWEsNey4OLKaqZCyJ8UmCQCGANLTjHLIOOJUbqavLzYybPccMN+W3qrReLZcLPcZbddaKooayE7skM8ZY5p9YPH7D2ryK3nTc0rSVOkaDVsUTG1tFUCnlkAwZIn5wD6cOAxnlk+lVDXXR1PUx5nPUw5LstV0D/8ABao/3IP6PWAdM/rnd7Ng/q9Z/wBA/wDwWqP9yD+j1gHTP653ezYP6vVfD/kX6d7+GMXsGxTabf7NSXi06Z84oayMSwS+fUzd9h5HDpAR9hAK9x6Pu14DJ0jgY4/+JUn7i2T0bRedE6Sqtoes9RXCg0vHTmKgtss7iypJwQ9kZOOzDcAE5J5cTgO1Tb3rPWFXNT22snsNnyRHT0khZI9vYZJBgkntAIHHGDzM5nq5Z2Y7bT9ufLhMZb3anqYZaaokp5m7ssTyx7cg4IOCMjgeI7F81+klziXEkk5JPMr8VpxEREBERAXQHoz9Rel+7yeK9c/l0B6M/UXpfu8nivVPjfGfaxw3lfpsc8lE6y+aF57hP4blLHkonWXzQvPcJ/Dcs7HvF29nM1ERbsZQiIgIiIC3B0PuvK291qPCK0+twdD7rytvdajwiuev4X6T0/OLzhaM6bXU/Te14PDlW8wtGdNrqfpva8HhyrK0PyT7X9XwqlaIi2WaIiICIiAre9BT5j3/ANpN8NqqEre9BT5j3/2k3w2qtxf467cP5rFhCgQrKaDnNtp63tX+2arxXLEFl+2nre1f7ZqvFcsQW5p+E+mVn3oiIpPBERAUZqDlb+/xfmpNRmoOVv7/ABfmoavhU9PyiTREU0BERAREQXh6G/UrT9+n/EFie3jbxq/Qm0Wq07aLbY56WGGJ7X1UErpCXNyclsjRj0cFlnQ26labv0/4gq+9L/ruuPdoPwBZ2GEz18pZuuZW46Usem+9JjaZcqUwU0lotRPAy0VIS/H2yueB9oGVqO83S5Xm4y3G7V9TXVcpy+aeQvefvJ5DsHILxor2Onjh2myrcrl3ov1ri1wcCQQcgg4IK/EU0XRDYjqhms9l9nu8jxJUPgENVw/81nyX5HrIz9hCpVtu0hNpbazdrFTwPMc1SJqJoHF7JTloAHoJLfuW3ug7qvyVxu+jamX5E7BW0jTn+JuGyAdnEFpx6it0a/2bUOpdpeldW1DY9y0OkNS1wH94AN6LP2P4rOmXoatl7Llnq4S/tpDpBSx7Ptiel9mFI9oq6tgqbgWjG8Ad52ftkPb2NVbVnm3zVh1ltTu91Y4upYZPNKTjkeSjJAI9ROXfesDV3RxuOPXvVbUu+XTtBERdEBFnvR+sFv1LtdsVqurIpaN0rpZIZDwl8mwvDMdoJAyO0Aq6+2Cg07NsvvkV+paY26ChkeN5g/ui1p3CzhwcDjGOOcYVfV1/TymO2+7rp6Vzxt3c610T2F9Tuk/ZMH4Audi6MbGqeSi2S6Wp6hu5JHaaffB7DuAkfcuXG+MdOG71Qnaf1lao9sVfjPWOqd2h1EVXr/UVVA4OimutTIxwOQQZXEH+RUEreHjFfLvXRTS3Uvb/AGC3wFzrXRXSYLtjVua0ZJsTAPt8iudSqcJ3y+1jiO2KwPQc6xbt7NP42qT6eHzj0x3Sf8bVGdBzrFu3s0/japPp4fOPTHdJ/wAbUv8AyY9n4KrWrzdDvqPoO91H4yqMq83Q76j6DvdR+MqXGeH+ocP5f4qTtp62dUe0pvxFfbYR1xaV9ox/1Xx209bOqPaU34ivtsI64tK+0Y/6rt/4/wDHP/utf0w+o+u73T/jCo0ry9MPqPru90/4wqNLjwf4668R5f4tV0EP8Dqj/dp/6PWaav2RUus9uf8AabUZjNlpqSFkNIT8qslZkkEf+mMjPpPDlnOF9BD/AAOqf9yD+j1jvSi1dftM9IC3XS118zH2yihkp4nPJjG8Xb7S3lhwAB7SMegY5ZY5XXymPTonjZNOWvR01rHqeC7Wy7OqHzaYEYhpoI2hsdJKBxBA4ZcBwJ9BHDAzW9dDrLX6b2w7LfKSRiWgukBjqISQXwSDmPU5p4g+oFUX2maOuWhNY1unbm3edCd6GYDAniJO48faBxHYQR2Lrwup05L3jnr4bfynZjKIituAiIgIiIC6A9GfqL0v3eTxXrn8ugPRn6i9L93k8V6p8b4z7WOG8r9NjnkonWXzQvPcJ/DcpY8lE6y+aF57hP4blnY94u3s5moiLdjKEREBERAW4Oh915W3utR4RWn1uDof4+PG28edLUY//Mrnr+F+k9Pzi84WjOm11P03teDw5VvMLRnTa6oKX2vD4cqytD8k+1/V8KpWiItlmiIiAiIgK3vQU+Y9/wDaTfDaqhK3vQU+Y9/9pN8NqrcX+Ou3D+axYQoEKymg5zbaet7V/tmq8VyxBZftp63tX+2arxXLEFuafhPplZ96IiKTwREQFGag5W/v8X5qTUZqDlb+/wAX5qGr4VPT8ok0RFNAREQFmmyvZpqLaRV11NYJKGI0TGOmdVSlgG8SBjDST/CexYWi8yls2l2pNperoZsN0RU7P9ntJp2urIauqbI+WZ8IPkw55zhpIBIAwMkDPoHJau6QuwjUeuNbu1Np64W0CanZHNBVvfG4OYMAtIaQQRjnjBHbnhURFVx4fLHLmmXX6WLrS48u3R7r/aqyx3yus9xjbHV0VQ+CUNeHDea7GQQTkHn9/HHJeFEVuf2riIiDJdmGpZNIa+s+oWEhlJUNMwGeMR4PGBz+STw9OFdnpAazi0xshuN2o58VFdCKaic3GS6UYDhn0NJP3KgKk7pqG/3Sgp6C53y511HS483gqat8kcWBgbjSSG4HDgBw4Lhq6EzymXw64alxliMREXdyEREE5oLUVRpPWNr1HSND5KCoEm4f87eTm+rLSRn1q2O2c3PbNspo5Nmlwpa6n8s2WvoTMI5nYGRGckBpB4kEjPAgnABpkvZabpc7RVirtNxq7fUAYEtLM6N4Hoy0grjq6XNZlO8dMNTaXG9q2voPo86/vGoqaG/Wd1ntbXg1VRNMwksBGWsa0kkkZAOMDmT2HeHSE2vWXRWl59KacrIqi/SQebNbC4OFCzGC55HAOA5N55wSAOdT6vXuuauB8FVrTUc8Lxh0cl0ne0j0EF+CFjijdHLPKXO9J+ol6swm2MERFYcV5uixrO2ao2YUFkM8fwlaIBSVFOXfK8mODHgdrS3AyORBC1RrTot6ik1RVS6YutoFomlL4m1cj45IQSSWENYQQOQOeI5gKvNur662VjKy3VtTR1UZyyaCUxvb9jgQR9xUzXa61tX0r6Wu1jqGqp5AWvimuUz2uB5gguII+1VfQzxytwu0rv6syx2ynZazo72LRGidV1ulrPdo79qM0hmudfFjyMIDwBCzBIzkkniTkcccAPf0k9ndm19Bb6uTV1usddbw9rXVcrRFIx2CQckEEEZBGe0Y7RSJE9vefm5up605eXboyXRuir5q3VrtMWV1DU1zd8l7aj+4IYcFzX4G830HHEHkry7B9G1+g9m9Fp66VEE1ZHJJLKYCSwF7icAkAnAxxwFz1RT1dHLUm2/RHS1Jhd9m/wDpG7F9R229ag11SVFFVWaWU1Ug8oWTRbxGQWkYIBPAgk4PIL+Ojlsd1VW6h05ruV1FT2aOYVTS6bMr2tyAA0A4yRjiRwytBovfTz5OXf8A+PObHm32dDduejK3X2ziu07b6qCmq5HxyxOmzuFzHA4JGSAeIzg49BVGtSaE1Bp/XUOjK+KD4WmmihjbHMHMcZCAz5XDAJI54x2rF0Xmjo3Slm/R7qakzvbqvH0YtmN82dWi6/D89I6qr5WFsdPIXhjGgjiSBxJJ4DIwBxWJdJ/Y1qTV2pXavsNTRSxxUIjqKaaQxyDyeTlpwQQQeRIII7c8KkooTQymfPzdfp7daXHl26Nv9GDaZ/YXWAttznLbFdXiOo3icQS8mS+odh9WD2Kze3rZbRbTdNxtp5oaW8UmX0NU4ZaQebHEAndPPIzg4ODxBoKi9z4fmzmeN2rzHW2x5bN4yXaNom+aB1CLHf207ap0LZ2mCXfY5hJAIOAebTwIBWNIisTeTq5XbfoIiL0EREBdAejP1F6X7vJ4r1z+XQHoz9Rel+7yeK9U+N8Z9rHDeV+mxzyUTrL5oXnuE/huUseSidZfNC89wn8Nyzse8Xb2czURFuxlCIiAiIgKd0Bqeu0brC26ltzWvqKGXf3HEgSMILXsJHIFpIz2ZyoJEsmU2pLZd4vbp/pCbMLlaWVlVfXWufdBlpqmnkL2HtALGkO9RBP3clXvpMbYKbaJU0dnsUcrLHQyGYSyt3XVMpBAfu9gAJAzxO8SQOAGlkVfDhsMMuZ1y1sspsIiKw5CIiAiIgK3vQU+Y9/9pN8NqqEre9BT5j3/ANpN8NqrcX+Ou3D+axYQoEKymg5zbaet7V/tmq8VyxBZftp63tX+2arxXLEFuafhPplZ96IiKTwREQFGag5W/v8AF+ak1Gag5W/v8X5qGr4VPT8ok0RFNAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAXQHoz9Rel+7yeK9c/l0B6M/UXpfu8nivVPjfGfaxw3lfpsc8lE6y+aF57hP4blLHkonWXzQvPcJ/Dcs7HvF29nM1ERbsZQiIgIiICIiAiIgIiICIiAiIgK3vQU+Y9/8AaTfDaqhK3vQU+Y9/9pN8NqrcX+Ou3D+axYQoEKymg5zbaet7V/tmq8VyxBZftp63tX+2arxXLEFuafhPplZ96IiKTwREQFGag5W/v8X5qTUZqDlb+/xfmoavhU9PyiTREU0BERAX908M1RURU1PGZZ5ntjijDgC97jhrRkgZJwBkjiV/C91gpqmsvdFT0VTFTVbp2GnmlIDY5AcsdxBGd4DHDml6Qndk1w0DJBBXR018oK2426EzVdFC2Qva0DiGHd+WR6AoDSdmk1BqGks8c7YHVJcBI4EgYaTyH2YWyX2k6puNyoNUaZ+C6+njdK68UYcyNxaQeIcC1wcO3iccsHiMO2PdZFo/65PCeucyu1TuM3j7SaGiqILh8C6hpLnVW8OdUUwgkieACQcFwwSCOzh61jVgtc95vNLa6XAlqZAwE8gOZJ9QAJ+5ZbdtYQ2urvNJY7BS2+qqZJYZ6vy0kj3DeIJAcSGknjw4epfXZPDR26gu2rK+uNLFTMNDC5sYk3JZADvFo4khpbyPJx9Sc1k3v+G0tmzGNZafqNM32S11ErZiGNfHK0YD2kcCB9uR9y/jTOnq/UElUyhkpIm0kPlaiaqm8nFE05wXOwSMlp7OwrMtdQ2+8bP7febddn17rK4UVTLJD5IyNeWhhLTk5BLQOP8AmPPgvjomOS7bM7/Ybad65mdlSIQcPliG7kD08jw9Y9Kc15f7OWboms0YX2qqudivVFeYKME1LIQ5kkYGeO64cRwPEHjjhlRmjNPz6mvsVrgqIqfLHPkkkyd1oaeQHM5xw4cz6MH+4dGXme0194qKDzWCghfvOqmmN0mQQY2bw4kj5OMgccFZBsM4a7Zwz/wsvD08AnNdr/TySWxCXiy2KjpJ30eraWsqoz8mn8znj3uIyA4tIzjPPgeXDmseWV6qYyeCXzPRMlscyUvlqi6oflgzng47rcnHHjjBHbkYzTU81R5z5CN8nmtLJWTYGdyGPG+8/ZvD+aljem9ryzrtHyUrpOzSag1DSWeOdsDqkuAkcCQMNJ5D7MKKWW7Husi0f9cnhPXuV6WwxnWR9hoilrH1tJZNSUtzudKx7jRCnkhdIWc2tc/Dc59YCx7SVqOob7R2uCoji87JDZcbzR8kuz/2WzbTXW4waor9N2SnpNRUJlLvlyzuli3jvvY3PB+QTgD0DtWF7JCXbR7Q5xJJleSScknccueOV6/0nZOj432wWO2wVzYtWU9VXUrZA2lFDMwySNz/AHe8RujJGM5woeyWutvNzht1vhMtRKcNaDgAdpJ7ABxJWU68FNJJdvJ6LnopGVEkjri2WcgNa/ec/DssDXAHJ7AeGOa/nYxURw6zfHLVNg86oJqaHeAwZXFpac9n8LuHble81ktebS2R+HQglkmoLdqO1194haXGhic5pe4Zyxj3ANLuB4Ej14WKx0FVLc22xrGMq3zCANkduhshdu4JAOBntwVNU+gtR3G7yWia0yMc0nyslTGRCAP8xcRjHoPHK8tlY+LWtDFLUNqHsuMbXStcXB5EgBIJ4kH0r2Xv1eWf08l9tVbY7tUWq4mnNVTu3ZPN5C9nEZ4FwBPP0BeFZttVtdzn1/d54LdWSxGRpD2QuLSAxoOCBjsKhdC2Iai1NS2yQO83cS+oc1xaWxt4u4jiCeWR6V7jf47ln8novujLvZ9MW6/VXkTDWZ342k78OeMe9w7Wgk+g8OPNQlqpHXC6UlA14jdUzMhDiMgFzgMkerK3DHcNP6zlvVmgvs1SLpGx9HTPpHwebviALcOJ4/wjIIHaCOa1VpJrm6vtDXsfG8V8Ac17S1zT5RvAg8QfUVDDK2Xd7ljN4+Wo7VPY77WWmokjkkppCzfjzhw7DxAwSCOHZy481Na60XW6VioZ5qllVDVtJD2MLQ0gA4OSeODn7iv52q9Yd5/3x+ELamqKaLVElbpB72sqm0lPW0bnY4EDdeB9wH8ylzs2v/smMu7V0Gia1+g5dWSVTIoWE7kLozvPG8BnOeAzn+S8WidOO1NdZaFtYykEVM+odI9heMNIBGBx7f8Astk64u1LDs/1JQ0LA6ktclHbowHYGTI1rnfcXH/6rF9hhH9qa8mPygFrmy3JG9xZw4cePqXkztlr247WMdvFrsFJb5J6HVMVxqGlobTx0UrC7LsZy8BoA58fRwyeC/NF6dfqO41NP55HRRU1K+pklfE94AaW8PkjtyTxIPDgDxx99Uebm3tkg0bLYwyQF9Q6WdwIPyQ3+8y0ZcQpnY1E59Zf3Ngje74ImaH83gkt+S3hyOOPEfwjgeyVyvL3eSS2Iqu0iTaqu72a9W670NHF5WoMZfFNE0Zy5zHgYaABxz6eAxxxhbJ2UW24WSoud/u9NNQ2yGhkZIZ2FnlScYaAQM8uztwO1a7pqeao858hG+TzWlkrJsDO5DHjfefs3h/NezLvvezyzttHyREU0RERAREQEREBdAejP1F6X7vJ4r1z+XQHozdRel+7yeK9U+N8Z9rHDeVbHPJROsvmhee4T+G5Sx5KJ1l80Lz3Cfw3LOx7xdvZzNREW7GUIiICIiAiIgIiICIiAiIgIiICt70FPmPf/aTfDaqhK3vQU+Y9/wDaTfDaq3F/jrtw/msWEKBCspoOc22nre1f7ZqvFcsQWX7aet7V/tmq8VyxBbmn4T6ZWflRERSeCIiAozUHK39/i/NSajNQcrf3+L81DV8Knp+USaIimgIiIC/QSCCDgjkQvxEHvrr1eK6i8yrbtX1VLlp8jNUPez5Jy35JOMggH7l5qSpqaOpZU0lRNTzsyWSxPLHtyMHBBBHAkfeviibQ3r+pHvlkfJI5z3vJLnOOSSeJJJ5lfSSrqpKKKilqZn0sLzLHA55LGPIILg3OAcOIzjtXxRB96WrqqWOojpqmaBlSwMnbG8tErRnDXAH5QGTz9JX8U09RSztnpp5YJWHLXxuLXA+kEcQvmibD33G8Xe4xtjuN1rqxjTkNnqHyAH0gEnC+FBXVtBUCooKuopJgCBJDIWOAPMZBBwvOibTsbpWo1LqOpgkgqL/dZopGlkkb6yRzXA8CCCcEH0FRsM0sPlfIyvj8vC+CXddjfifjeY7HNpwMg88BfwibR7vRfajqqmjqWVVHUTU87CSyWJ5Y9uRg4III4Ej718UR49VJcLhSVbqykrqqCpfnemjlc15zxOSDk57ePFfGgnnoJo5qGaSlki/5b4XFjmc+RHJfNE2gl36o1M9hY/UV3c0ggg1shBB5gjKiQSCCDgjkQvxEkk7G9vdJz6gv09KaWe93KWnI3TE+qeWEeggnGPUo+KSSKVssT3RvYQ5rmuILSDkEEcQQe1fwibSG9TB1VqcgtdqO8EEYOa6Xj/3UbR1VTRTmeiqZqaV0boi+J5Y4sdjebkY4HA4eoL4ovNo93r60lRUUlQyppJ5aedhyySJ5Y9p9II4hfjZ521Zq2zSCoMvlfLB53/KE7xfvZzvEknOcr5ovXj61dTUVdS+pqqiWonecvkleXvcfSSeJXqF5u/nza4XWuFW1m4JxUP8AKBvLAdnIHqzheBE2hu9Dq2sdSz0rqud1PPIJJojI7ckcDvBzm5wSCAcn0L9t9fXW6cz26tqaSUtLC+CUxuIOCRkEHHAcPUvMibQ3SlVqPUFVTvp6q+3SeF4w+OWre5rh6CCcELy2643G2yult1fV0UjxuudBM6MkegkEZC8qJtOz3evbcbvdrk1rbhc66sa05AnnfIAfSMk4Xlhmlh8r5GV8fl4XwS7rsb8T8bzHY5tOBkHngL+ETadnm9EREBERAREQERZJssp6Wr2maYpa4A00t3pWSh3ItMrQQfUeR+1eW7S17JvdlgtjHRrt1TZqa+a+dUvmqWCSO2RPMQjYQCPKuHyi4jmARjkSTnFj9NWS16cslNZLLSikoKRpZDCHufugkkjLiSeJPMlSfYmVjamrlqXe1pYYTCdBfCtpoaukmpahm/DNG6ORuSN5pGCOHHiCvui5ptY/EJsk+p8PvlR+4nxCbJPqfD75UfuLZyKfq5/NQ9PH4ax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/Eax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/Eax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/Eax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/Eax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/Eax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/Eax+ITZJ9T4ffKj9xPiE2SfU+H3yo/cWzkT1c/mnp4/DWPxB7JfqfD75UfuLK9E6L0zoqinotMWttvgqJPKysbK9+88ADOXuJ5ADgsi4Io3PKza17MZL0j9REXiTUO0To+6F1bNXXGGOqtN4rJHzyVcEz3h8jiSS6N5IwSeIbu+ohU12h6Ru2h9V1enbyxoqKcgtkZksmYeLXtJ5gj7wQQeIK6Tjgqo9PGnpW3fSlWwN87kgqY5SOZY10ZZn1Ze/H3q5wmrlzTC3oq6+nNuad1ZkRFpKYiIgKM1Byt/f4vzUmozUHK39/i/NQ1fCp6flEmiIpoCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgL9Y97HB8ckkT2kFr43lrmn0hw4tIPaF+IgvFsX276Z1bZaak1DcqW03+NgZOyoeIo6hwH8cbjgcf9JwQcgAjBO1he7MRkXagI7P8AiGfquY6KllwWNu8uyzjxNk2sdPmXChfF5RtbTOj/ANQlBH88r4/DVn+lqD3hn6rmOi89jPl77r+nTj4as/0tQe8M/VPhqz/S1B7wz9VzHRPYz5PdX4dOPhqz/S1B7wz9U+GrP9LUHvDP1XMdE9jPk91fh04+GrP9LUHvDP1T4as/0tQe8M/Vcx0T2M+T3V+HTj4as/0tQe8M/VPhqz/S1B7wz9VzHRPYz5PdX4dOPhqz/S1B7wz9U+GrP9LUHvDP1XMdE9jPk91fh04+GrP9LUHvDP1T4as/0tQe8M/Vcx0T2M+T3V+HTj4as/0tQe8M/VPhqz/S1B7wz9VzHRPYz5PdX4dOPhqz/S1B7wz9U+GrP9LUHvDP1XMdE9jPk91fh04+GrP9LUHvDP1T4as/0tQe8M/Vcx0T2M+T3V+HT2G5W+YEw19LLjnuStOP5FfN14tLXFrrpQtI5g1DAR/3XMZE9jPk91/To5q3aJorS9vfWXfUVuiDQS2JkzZJZD6GsaSST9mPThUb217QaraPraW9yQvpqOJggoadzsmOIEkE44bxJJOPSBkgArB0XbR4aaV333rlqa1zm3aCIisOQiIgKM1Byt/f4vzUmozUHK39/i/NQ1fCp6flEmiIpoCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICjNQcrf3+L81Jry3Ck87FP/ebnkZ2zcs5xnhz4c+ahqS3HaJYXa716kRFNEREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQf/2Q==" alt="PV Junk">
+  <div class="footer-brand">PV Junk<span class="footer-brand-tag">Space. Reclaimed.</span></div>
   <div class="footer-info">
     Junk Removal & Organization Services<br>
-    <a href="/cdn-cgi/l/email-protection#90e0e6fae5fefbfcfcf3d0f7fdf1f9fcbef3fffd">Email Us</a> &nbsp;·&nbsp;
+    <a href="mailto:info@pvjunk.com">info@pvjunk.com</a> &nbsp;·&nbsp;
     <a href="tel:4842380809">(484) 238-0809</a>
   </div>
   <div class="footer-copy">© 2025 PV Junk LLC. All rights reserved.</div>
@@ -780,12 +975,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Pricing tabs
-  var tabLoad = document.getElementById('tab-load');
-  var tabItem = document.getElementById('tab-item');
-  if (tabLoad) tabLoad.addEventListener('click', function() { switchTab(this,'load'); });
-  if (tabItem) tabItem.addEventListener('click', function() { switchTab(this,'item'); });
-
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -796,17 +985,177 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  function switchTab(btn, panel) {
-    btn.closest('.faq-a-inner').querySelectorAll('.ptab').forEach(function(t) { t.classList.remove('active'); });
-    btn.classList.add('active');
-    btn.closest('.faq-a-inner').querySelectorAll('.pricing-panel').forEach(function(p) { p.classList.remove('active'); });
-    document.getElementById('panel-' + panel).classList.add('active');
-  }
-
 });
 </script>
 
+<!-- ============================================================ -->
+<!-- CONTACT FORM MODAL                                            -->
+<!-- Submission goes to a Google Apps Script web app you'll deploy -->
+<!-- ============================================================ -->
+<div class="contact-form-modal" id="contactFormModal" role="dialog" aria-labelledby="cfTitle" aria-modal="true" hidden>
+  <div class="contact-form-backdrop" data-cf-close></div>
+  <div class="contact-form-dialog">
+    <button type="button" class="contact-form-close" aria-label="Close form" id="closeContactForm">×</button>
+    <h2 id="cfTitle">Send Us a Message</h2>
+    <p class="contact-form-intro">Fill out the form and we'll get back to you within one business day. Required fields marked <span class="cf-required">*</span></p>
+    <form id="contactForm" novalidate>
+      <div class="cf-row">
+        <label><span class="cf-label-text">First Name <span class="cf-required">*</span></span>
+          <input type="text" name="firstName" required maxlength="60" autocomplete="given-name">
+        </label>
+        <label><span class="cf-label-text">Last Name <span class="cf-required">*</span></span>
+          <input type="text" name="lastName" required maxlength="60" autocomplete="family-name">
+        </label>
+      </div>
+      <label><span class="cf-label-text">Email <span class="cf-required">*</span></span>
+        <input type="email" name="email" required maxlength="120" autocomplete="email">
+      </label>
+      <div class="cf-row">
+        <label><span class="cf-label-text">Phone <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:normal;">(optional)</span></span>
+          <input type="tel" name="phone" maxlength="20" autocomplete="tel">
+        </label>
+        <label><span class="cf-label-text">ZIP Code <span class="cf-required">*</span></span>
+          <input type="text" name="zip" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric" autocomplete="postal-code">
+        </label>
+      </div>
+      <label><span class="cf-label-text">Service Type <span class="cf-required">*</span></span>
+        <select name="serviceType" required>
+          <option value="">Select one…</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+        </select>
+      </label>
+      <label><span class="cf-label-text">Tell us about your need <span class="cf-required">*</span></span>
+        <textarea name="details" required rows="4" maxlength="2000" placeholder="What needs to go? Roughly when do you need it done?"></textarea>
+      </label>
+      <!-- Honeypot field — humans won't see this; bots will fill it and get rejected -->
+      <input type="text" name="website" class="cf-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="cf-submit" id="cfSubmit">Send Message</button>
+      <div class="cf-status" id="cfStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
 
+<script>
+/* ============================================================
+   CONTACT FORM SCRIPT
+   ------------------------------------------------------------
+   Before this works in production you must fill in TWO values:
+     APPS_SCRIPT_URL   – the Web App URL of your deployed Google
+                         Apps Script (see deploy instructions in
+                         the change log)
+     RECAPTCHA_SITE_KEY – your reCAPTCHA v3 site key from
+                         google.com/recaptcha/admin
+   ============================================================ */
+(function(){
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUBzXnRqPFHKW0kf3nYk-wa61Q9M02mZA0Oo2NVFCC5GGMCmjTswk8RYKvL_8fZHidsg/exec';
+  const RECAPTCHA_SITE_KEY = '6LdvqxAtAAAAANbKPZg25Sja5dpSMy3QHCL0k7ez';
+
+  const modal = document.getElementById('contactFormModal');
+  const closeBtn = document.getElementById('closeContactForm');
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('cfStatus');
+  const submitBtn = document.getElementById('cfSubmit');
+  const triggers = document.querySelectorAll('.contact-form-trigger');
+  let lastFocused = null;
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    lastFocused = document.activeElement;
+    modal.classList.add('open');
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    // Focus first input for keyboard users
+    setTimeout(function(){ form.querySelector('input,select,textarea').focus(); }, 50);
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    form.reset();
+    status.className = 'cf-status';
+    status.textContent = '';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  triggers.forEach(function(btn){ btn.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  modal.querySelectorAll('[data-cf-close]').forEach(function(el){
+    el.addEventListener('click', closeModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  async function getRecaptchaToken(){
+    // Only attempt if the reCAPTCHA library actually loaded
+    if (typeof grecaptcha === 'undefined' || !RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY.indexOf('PASTE_') === 0) return '';
+    return new Promise(function(resolve){
+      grecaptcha.ready(function(){
+        grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'submit'}).then(resolve).catch(function(){ resolve(''); });
+      });
+    });
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    // Native form validation
+    if (!form.checkValidity()){ form.reportValidity(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    status.className = 'cf-status';
+    status.textContent = '';
+
+    try {
+      const recaptchaToken = await getRecaptchaToken();
+      const fd = new FormData(form);
+      const payload = {
+        firstName:   fd.get('firstName'),
+        lastName:    fd.get('lastName'),
+        email:       fd.get('email'),
+        phone:       fd.get('phone'),
+        zip:         fd.get('zip'),
+        serviceType: fd.get('serviceType'),
+        details:     fd.get('details'),
+        website:     fd.get('website'),  // honeypot
+        recaptchaToken: recaptchaToken,
+        pageUrl:     window.location.href
+      };
+
+      // Apps Script Web Apps don't honor CORS preflight, so we use text/plain
+      // and rely on the response. We still get a network response on success.
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+      });
+
+      let result = { success: false };
+      try { result = await response.json(); } catch(_) { /* response may be opaque */ }
+
+      if (response.ok && result.success !== false) {
+        status.className = 'cf-status show success';
+        status.textContent = 'Thanks! Your message was sent. We\u2019ll be in touch within one business day.';
+        form.reset();
+        setTimeout(closeModal, 3500);
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (err) {
+      console.error('Form submission error:', err);
+      status.className = 'cf-status show error';
+      status.innerHTML = 'Sorry, something went wrong. Please call us at <a href="tel:4842380809" style="color:inherit;text-decoration:underline;">(484) 238-0809</a> or email <a href="mailto:info@pvjunk.com" style="color:inherit;text-decoration:underline;">info@pvjunk.com</a>.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
