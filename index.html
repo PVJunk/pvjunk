@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Last updated: 2026-06-06 (hero redesign, services split, email fix) -->
+<!-- Last updated: 2026-06-07 (hero chips + vertical centering, footer year bump) -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -152,7 +152,7 @@
   .hero{background:var(--navy-dark);display:flex;align-items:center;padding:140px 5% 100px;position:relative;overflow:hidden}
   /* Hero is a two-column grid on desktop, stacks on mobile (mobile override in @media block) */
   .hero-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;width:100%;max-width:1400px;margin:0 auto}
-  .hero-content{position:relative;z-index:2;max-width:640px}
+  .hero-content{position:relative;z-index:2;max-width:640px;align-self:center}
   .hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 18px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:28px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
   .hero-tag::before{content:'';width:7px;height:7px;background:#6de8b0;border-radius:50%;display:block}
   /* Brand name as H1 — clamp() scales fluidly between mobile and desktop */
@@ -202,6 +202,15 @@
   .ai-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,193,7,0.12);border:1px solid rgba(255,193,7,0.35);border-radius:100px;padding:5px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#FFC107;font-weight:700;margin-bottom:18px}
   .ai-eyebrow::before{content:'';width:6px;height:6px;background:#FFC107;border-radius:50%;animation:pulse 1.8s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+  /* "We Haul" quick-scan chip row — sits below hero buttons. Each chip scroll-anchors to
+     #services. Doubles as long-tail SEO surface and reduces "do they take X?" friction.
+     White-toned (NOT amber) — amber stays reserved for AI CTAs and focus ring. */
+  .hero-chips-wrap{margin-top:22px;max-width:520px}
+  .hero-chips-label{display:inline-flex;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:600;margin-bottom:10px}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:7px}
+  .hero-chips a{display:inline-block;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-radius:100px;padding:6px 13px;font-size:.78rem;color:rgba(255,255,255,0.82);text-decoration:none;font-weight:500;transition:background .15s,border-color .15s,color .15s}
+  .hero-chips a:hover,.hero-chips a:focus-visible{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);color:var(--white)}
 
   /* Make the nav AI link stand out without redesigning the nav */
   .nav-cta-ai{background:linear-gradient(135deg,#FFC107,#FFB300)!important;color:var(--navy-dark)!important;padding:9px 18px;border-radius:4px;font-weight:700!important;box-shadow:0 4px 14px rgba(255,193,7,0.3);transition:transform .15s,box-shadow .2s}
@@ -604,6 +613,17 @@
           Send Us a Message
         </button>
       </div>
+      <div class="hero-chips-wrap" aria-label="Common jobs we handle — tap to see services">
+        <div class="hero-chips-label">We Haul</div>
+        <div class="hero-chips">
+          <a href="#services">Furniture</a>
+          <a href="#services">Appliances</a>
+          <a href="#services">Hot Tubs</a>
+          <a href="#services">Garages</a>
+          <a href="#services">Estates</a>
+          <a href="#services">Construction Debris</a>
+        </div>
+      </div>
     </div>
     <div class="hero-visual">
       <!-- Before/After proof: photos are eager-loaded (above the fold) -->
@@ -896,7 +916,7 @@
     <a href="mailto:info@pvjunk.com">info@pvjunk.com</a> &nbsp;·&nbsp;
     <a href="tel:4842380809">(484) 238-0809</a>
   </div>
-  <div class="footer-copy"><a href="/accessibility.html">Accessibility</a> &nbsp;·&nbsp; © 2025 PV Junk LLC. All rights reserved.</div>
+  <div class="footer-copy"><a href="/accessibility.html">Accessibility</a> &nbsp;·&nbsp; © 2026 PV Junk LLC. All rights reserved.</div>
 </footer>
 
 <script>
