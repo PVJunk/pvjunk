@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility Statement | PV Junk</title>
+<meta name="description" content="PV Junk's accessibility statement and our commitment to WCAG 2.1 Level AA compliance.">
+<link rel="canonical" href="https://pvjunk.com/accessibility.html">
+<meta name="robots" content="index, follow">
+
+<!-- Fonts (match main site) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy: #2b3f6b; --navy-dark: #1e2e50; --navy-deeper: #162240;
+    --navy-light: #3a5080; --white: #ffffff; --off-white: #f6f8fc;
+    --light-gray: #e8edf5; --muted: #5a6377; --text-dark: #1a2540;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);line-height:1.6}
+
+  /* Accessibility — same patterns as main site */
+  .skip-link{position:absolute;top:-100px;left:0;background:var(--navy-dark);color:var(--white);padding:14px 20px;z-index:10001;text-decoration:none;font-weight:600;font-size:.95rem;border-radius:0 0 6px 0;transition:top .15s}
+  .skip-link:focus{top:0;outline:2px solid #FFC107;outline-offset:-2px}
+  *:focus-visible{outline:2px solid #FFC107;outline-offset:2px;border-radius:2px}
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}
+
+  /* Header — simplified version of main nav */
+  header{background:var(--navy-dark);padding:24px 5%;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'PT Serif',serif;color:var(--white);font-size:1.4rem;font-weight:700;text-decoration:none;letter-spacing:-.2px}
+  .logo-tag{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.78);font-weight:600;display:block;margin-top:2px;line-height:1}
+  .back-link{color:rgba(255,255,255,0.85);text-decoration:none;font-size:.92rem;font-weight:500;font-family:'DM Sans',sans-serif;transition:color .2s}
+  .back-link:hover{color:var(--white)}
+
+  /* Main content */
+  main{max-width:760px;margin:0 auto;padding:80px 5% 100px}
+  h1{font-family:'PT Serif',serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:700;color:var(--text-dark);margin-bottom:12px;line-height:1.15}
+  .lede{font-size:1.1rem;color:var(--muted);margin-bottom:48px;font-weight:300}
+  h2{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;color:var(--text-dark);margin:40px 0 16px;line-height:1.25}
+  p{margin-bottom:16px;color:var(--text-dark);font-size:1rem}
+  ul{margin:0 0 20px 22px;color:var(--text-dark)}
+  ul li{margin-bottom:8px;font-size:1rem}
+  a{color:var(--navy);text-decoration:underline;font-weight:500}
+  a:hover{color:var(--navy-dark)}
+  .meta{margin-top:48px;padding-top:24px;border-top:1px solid var(--light-gray);font-size:.88rem;color:var(--muted)}
+  .contact-cta{background:var(--off-white);padding:24px 28px;border-radius:10px;margin:32px 0;border-left:4px solid var(--navy)}
+  .contact-cta p{margin-bottom:8px}
+  .contact-cta p:last-child{margin-bottom:0}
+
+  /* Footer — matches main site */
+  footer{background:var(--navy-deeper);color:var(--white);padding:50px 5% 40px;text-align:center}
+  .footer-brand{font-family:'PT Serif',serif;font-weight:700;font-size:1.1rem;color:rgba(255,255,255,0.85);letter-spacing:-.2px}
+  .footer-brand-tag{font-family:'Barlow Condensed',sans-serif;font-size:.66rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.78);font-weight:600;display:block;margin-top:2px;line-height:1}
+  .footer-info{font-size:.82rem;color:rgba(255,255,255,0.78);margin:18px 0;line-height:1.9}
+  .footer-info a{color:rgba(255,255,255,0.85);text-decoration:underline}
+  .footer-info a:hover{color:var(--white)}
+  .footer-copy{font-size:.76rem;color:rgba(255,255,255,0.72)}
+  .footer-copy a{color:rgba(255,255,255,0.85);text-decoration:underline}
+  .footer-copy a:hover{color:var(--white)}
+
+  @media (max-width:600px){
+    main{padding:50px 5% 70px}
+    header{padding:18px 5%}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+  <a href="/" class="logo">PV Junk<span class="logo-tag">Space. Reclaimed.</span></a>
+  <a href="/" class="back-link">← Back to home</a>
+</header>
+
+<main id="main">
+  <h1>Accessibility Statement</h1>
+  <p class="lede">PV Junk is committed to making our website accessible to everyone, including people with disabilities.</p>
+
+  <h2>Our commitment</h2>
+  <p>We believe everyone should be able to learn about and book our services without barriers — regardless of how they use the web. We've designed pvjunk.com to work with screen readers, keyboard navigation, and assistive technologies, and we test against industry standards to make sure that's actually true in practice.</p>
+
+  <h2>Standards we follow</h2>
+  <p>This site aims to conform to <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</a>, the international standard for digital accessibility published by the World Wide Web Consortium (W3C). WCAG 2.1 AA is also the standard referenced by the Americans with Disabilities Act (ADA) for web content.</p>
+
+  <h2>What we've done</h2>
+  <p>Specific measures we've taken to support accessibility include:</p>
+  <ul>
+    <li><strong>Color contrast:</strong> All text meets a minimum 4.5:1 contrast ratio against its background (3:1 for large text), so it's readable for users with low vision.</li>
+    <li><strong>Keyboard navigation:</strong> Every interactive element — links, buttons, the contact form, the AI quote tool — can be reached and operated using only a keyboard.</li>
+    <li><strong>Visible focus indicators:</strong> A clear amber outline appears around whichever element is keyboard-focused, so users always know where they are on the page.</li>
+    <li><strong>Skip-to-content link:</strong> Keyboard users can skip past the navigation directly to the page content.</li>
+    <li><strong>Semantic structure:</strong> Headings, landmarks (header, main, footer, nav), and ARIA labels help screen reader users understand and navigate the page.</li>
+    <li><strong>Form accessibility:</strong> Form fields have visible labels properly associated with their inputs, and status messages are announced to screen readers.</li>
+    <li><strong>Modal focus management:</strong> When the contact form opens, keyboard focus is trapped inside so users don't get lost.</li>
+    <li><strong>Reduced motion support:</strong> Users who set "reduce motion" in their operating system get a still page with no decorative animations.</li>
+  </ul>
+
+  <h2>How we test</h2>
+  <p>We use <a href="https://github.com/dequelabs/axe-core" target="_blank" rel="noopener">axe-core</a>, an industry-standard automated accessibility testing tool, to audit the site against WCAG 2.1 AA criteria. The site currently passes all applicable automated checks. We also test manually with keyboard navigation.</p>
+
+  <h2>Known limitations</h2>
+  <p>Even with thorough testing, no site is perfectly accessible to everyone. Some areas where we know improvements are still possible:</p>
+  <ul>
+    <li>Some third-party embedded content (Google reCAPTCHA, for example) is governed by Google's own accessibility implementation, which is generally good but outside our direct control.</li>
+    <li>Automated testing can't catch every issue. We rely on user feedback to identify problems we may have missed.</li>
+  </ul>
+
+  <h2>Feedback &amp; help</h2>
+  <div class="contact-cta">
+    <p>If you encounter any accessibility barriers on this site, or have suggestions for how we can do better, please reach out:</p>
+    <p>Email: <a href="mailto:info@pvjunk.com">info@pvjunk.com</a><br>
+    Phone: <a href="tel:4842380809">(484) 238-0809</a></p>
+    <p>We'll do our best to respond within two business days and to provide the information or service you need in an alternative format if necessary.</p>
+  </div>
+
+  <div class="meta">
+    <p>This statement was last reviewed in June 2026. We update it whenever significant accessibility-related changes are made to the site.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">PV Junk<span class="footer-brand-tag">Space. Reclaimed.</span></div>
+  <div class="footer-info">
+    Junk Removal &amp; Organization Services<br>
+    <a href="mailto:info@pvjunk.com">info@pvjunk.com</a> &nbsp;·&nbsp;
+    <a href="tel:4842380809">(484) 238-0809</a>
+  </div>
+  <div class="footer-copy"><a href="/accessibility.html">Accessibility</a> &nbsp;·&nbsp; © 2025 PV Junk LLC. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
