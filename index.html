@@ -108,8 +108,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 
-<!-- reCAPTCHA v3 — replace 6LdvqxAtAAAAANbKPZg25Sja5dpSMy3QHCL0k7ez with your real site key after registering at https://www.google.com/recaptcha/admin -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LdvqxAtAAAAANbKPZg25Sja5dpSMy3QHCL0k7ez" async defer></script>
+<!-- reCAPTCHA v2 — loads the API but renders nothing visible until a .g-recaptcha widget div appears in the DOM (only inside the contact form modal) -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
   :root {
@@ -131,9 +131,9 @@
   .nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:.83rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .2s}
   .nav-links a:hover{color:var(--white)}
   .nav-cta{background:var(--white)!important;color:var(--navy-dark)!important;padding:9px 20px;border-radius:4px;font-weight:600!important}
-  .hero{min-height:100vh;background:var(--navy-dark);display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
+  .hero{background:var(--navy-dark);display:flex;align-items:center;padding:140px 5% 100px;position:relative;overflow:hidden}
   /* Hero is a two-column grid on desktop, stacks on mobile (mobile override in @media block) */
-  .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;width:100%;max-width:1400px;margin:0 auto}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;width:100%;max-width:1400px;margin:0 auto}
   .hero-content{position:relative;z-index:2;max-width:640px}
   .hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:7px 18px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:28px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
   .hero-tag::before{content:'';width:7px;height:7px;background:#6de8b0;border-radius:50%;display:block}
@@ -150,7 +150,9 @@
 
   /* Hero visual column — before/after photos + Google rating badge */
   .hero-visual{display:flex;flex-direction:column;gap:18px}
-  .hero-ba{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:10px;box-shadow:0 20px 60px rgba(0,0,0,0.35)}
+  .hero-ba{display:grid;grid-template-columns:1fr;gap:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,0.35)}
+  /* Slightly wider aspect ratio for stacked photos — keeps the hero from getting too tall while still showing meaningful photo detail */
+  .hero-ba .hero-ba-img{aspect-ratio:16/10}
   .hero-ba-img{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:var(--navy-deeper)}
   .hero-ba-img img{width:100%;height:100%;object-fit:cover;display:block}
   .hero-ba-label{position:absolute;top:10px;left:10px;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 11px;border-radius:4px;color:var(--white);z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
@@ -493,6 +495,8 @@
   /* Honeypot — visible to bots, invisible to humans */
   .cf-honeypot{position:absolute!important;left:-9999px!important;top:-9999px!important;opacity:0!important;pointer-events:none!important;height:1px;width:1px}
   .cf-submit{background:var(--navy-dark);color:var(--white);border:none;padding:14px 32px;border-radius:6px;font-family:inherit;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;width:100%;margin-top:6px}
+  /* reCAPTCHA v2 checkbox spacing — widget is 304×78 with fixed dimensions from Google */
+  .cf-recaptcha-wrap{margin:8px 0 14px;display:flex;justify-content:center}
   .cf-submit:hover:not(:disabled){background:var(--navy);transform:translateY(-1px)}
   .cf-submit:disabled{opacity:.6;cursor:not-allowed}
   .cf-status{margin-top:14px;font-size:.88rem;padding:12px 14px;border-radius:6px;display:none;line-height:1.5}
@@ -1030,6 +1034,10 @@ document.addEventListener('DOMContentLoaded', function() {
       </label>
       <!-- Honeypot field — humans won't see this; bots will fill it and get rejected -->
       <input type="text" name="website" class="cf-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- reCAPTCHA v2 checkbox -->
+      <div class="cf-recaptcha-wrap">
+        <div class="g-recaptcha" data-sitekey="6LdVyREtAAAAAAM8imd1RG0LTgInZvm612ilcPEj"></div>
+      </div>
       <button type="submit" class="cf-submit" id="cfSubmit">Send Message</button>
       <div class="cf-status" id="cfStatus" role="status" aria-live="polite"></div>
     </form>
@@ -1040,16 +1048,12 @@ document.addEventListener('DOMContentLoaded', function() {
 /* ============================================================
    CONTACT FORM SCRIPT
    ------------------------------------------------------------
-   Before this works in production you must fill in TWO values:
-     APPS_SCRIPT_URL   – the Web App URL of your deployed Google
-                         Apps Script (see deploy instructions in
-                         the change log)
-     RECAPTCHA_SITE_KEY – your reCAPTCHA v3 site key from
-                         google.com/recaptcha/admin
+   Uses reCAPTCHA v2 ("I'm not a robot" checkbox). The widget
+   renders via the .g-recaptcha div in the form HTML. Token is
+   read synchronously via grecaptcha.getResponse() on submit.
    ============================================================ */
 (function(){
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUBzXnRqPFHKW0kf3nYk-wa61Q9M02mZA0Oo2NVFCC5GGMCmjTswk8RYKvL_8fZHidsg/exec';
-  const RECAPTCHA_SITE_KEY = '6LdvqxAtAAAAANbKPZg25Sja5dpSMy3QHCL0k7ez';
 
   const modal = document.getElementById('contactFormModal');
   const closeBtn = document.getElementById('closeContactForm');
@@ -1077,6 +1081,10 @@ document.addEventListener('DOMContentLoaded', function() {
     status.textContent = '';
     submitBtn.disabled = false;
     submitBtn.textContent = 'Send Message';
+    // Reset the reCAPTCHA checkbox so it's unticked next time the modal opens
+    if (typeof grecaptcha !== 'undefined') {
+      try { grecaptcha.reset(); } catch(_) {}
+    }
     if (lastFocused) lastFocused.focus();
   }
 
@@ -1089,14 +1097,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 
-  async function getRecaptchaToken(){
-    // Only attempt if the reCAPTCHA library actually loaded
-    if (typeof grecaptcha === 'undefined' || !RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY.indexOf('PASTE_') === 0) return '';
-    return new Promise(function(resolve){
-      grecaptcha.ready(function(){
-        grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'submit'}).then(resolve).catch(function(){ resolve(''); });
-      });
-    });
+  // v2: token is read synchronously from the checkbox widget
+  function getRecaptchaToken(){
+    if (typeof grecaptcha === 'undefined') return '';
+    try { return grecaptcha.getResponse() || ''; } catch(_) { return ''; }
   }
 
   form.addEventListener('submit', async function(e){
@@ -1104,13 +1108,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Native form validation
     if (!form.checkValidity()){ form.reportValidity(); return; }
 
+    // v2: require the checkbox before doing anything else
+    const recaptchaToken = getRecaptchaToken();
+    if (!recaptchaToken) {
+      status.className = 'cf-status show error';
+      status.textContent = 'Please check the "I\u2019m not a robot" box before sending.';
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
     status.className = 'cf-status';
     status.textContent = '';
 
     try {
-      const recaptchaToken = await getRecaptchaToken();
       const fd = new FormData(form);
       const payload = {
         firstName:   fd.get('firstName'),
