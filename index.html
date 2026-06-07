@@ -129,6 +129,15 @@
   *:focus-visible{outline:2px solid #FFC107;outline-offset:2px;border-radius:2px}
   /* Buttons that already have shadow/transform animations get a thicker outline so it stands out */
   .btn-ai:focus-visible,.contact-form-trigger-btn:focus-visible,.nav-cta-ai:focus-visible{outline:3px solid #FFC107;outline-offset:3px}
+  /* Reduced motion: users with vestibular sensitivity get a still page (WCAG 2.3.3) */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
   nav{position:fixed;top:0;left:0;right:0;z-index:998;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;background:var(--navy-dark);box-shadow:0 2px 20px rgba(0,0,0,0.25)}
   .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;transition:opacity .2s}
   .nav-logo:hover{opacity:.92}
@@ -199,9 +208,9 @@
   .nav-cta-ai:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,193,7,0.45)}
   /* Social icons in nav — small, sit just before the AI Quote button. Use brand colors at slightly muted opacity so they read as recognized marks without competing with the CTA. */
   .nav-social-group{display:flex;align-items:center;gap:6px;padding:0 4px 0 8px;border-left:1px solid rgba(255,255,255,0.1);margin-left:4px}
-  .nav-social{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;text-decoration:none;background:rgba(255,255,255,0.06);transition:background .2s,transform .15s;padding:0!important}
+  .nav-social{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;text-decoration:none;background:rgba(255,255,255,0.06);transition:background .2s,transform .15s;padding:0!important}
   .nav-social:hover{background:rgba(255,255,255,0.15);transform:translateY(-1px)}
-  .nav-social svg{width:16px;height:16px;display:block}
+  .nav-social svg{width:18px;height:18px;display:block}
   .stats{background:var(--navy);display:grid;grid-template-columns:repeat(4,1fr)}
   .stat{padding:48px 40px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
   .stat:last-child{border-right:none}
@@ -347,6 +356,8 @@
   .footer-info a{color:rgba(255,255,255,0.85);text-decoration:underline}
   .footer-info a:hover{color:var(--white)}
   .footer-copy{font-size:.76rem;color:rgba(255,255,255,0.72)}
+  .footer-copy a{color:rgba(255,255,255,0.85);text-decoration:underline}
+  .footer-copy a:hover{color:var(--white)}
   @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
   .hero-tag{animation:fadeUp .6s ease .1s both}
   .hero-brand{animation:fadeUp .7s ease .25s both}
@@ -885,7 +896,7 @@
     <a href="mailto:info@pvjunk.com">info@pvjunk.com</a> &nbsp;·&nbsp;
     <a href="tel:4842380809">(484) 238-0809</a>
   </div>
-  <div class="footer-copy">© 2025 PV Junk LLC. All rights reserved.</div>
+  <div class="footer-copy"><a href="/accessibility.html">Accessibility</a> &nbsp;·&nbsp; © 2025 PV Junk LLC. All rights reserved.</div>
 </footer>
 
 <script>
@@ -1110,6 +1121,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Focus trap: keep Tab/Shift+Tab inside the modal while it's open
+  modal.addEventListener('keydown', function(e){
+    if (e.key !== 'Tab' || !modal.classList.contains('open')) return;
+    const focusable = Array.from(modal.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]):not([tabindex="-1"]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
+    )).filter(function(el){ return el.offsetParent !== null && !el.hasAttribute('aria-hidden'); });
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
   // v2: token is read synchronously from the checkbox widget
